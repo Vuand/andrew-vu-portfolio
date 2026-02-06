@@ -4,39 +4,40 @@
 
 ## What We're Working On
 **Phase 2: Ship**
-Full site is built and compiling. Next: add real assets and deploy.
+Homepage is now a complete recruiter view. Next: real assets + deploy.
 
 ## Current State
 - Full Next.js site built — 14 routes, 0 build errors
-- All 6 pages complete: Home, Projects (index + 4 case studies), Security, Resume, Contact
-- Animations, dark mode, responsive design, keyboard nav all working
-- SEO configured: metadata, JSON-LD, sitemap, robots, OG tags
-- SponsorHub architecture diagram rendered as animated SVG
+- **Homepage is a complete recruiter view** — no clicking required to see full experience/education/skills/security:
+  Hero → TL;DR → Projects (proof tiles + 3 cards) → Experience → Education → Skills (Software|Security tabs) → Security Preview → Contact
+- Navbar uses scroll-spy with section anchors on homepage, page links on subpages
+- Scroll progress indicator on homepage
+- Skills section has Software/Security toggle tabs
+- Security preview shows "What I Can Prove" vs "What I'm Learning" split
+- All subpages (projects, security, resume, contact) still accessible for deep dives
 
-## What Was Built (file count)
-- 10 UI components in `src/components/ui/`
-- 3 layout components in `src/components/layout/`
-- 6 homepage sections in `src/components/sections/`
-- 1 project-specific component (SponsorHub diagram)
-- 1 data file (`src/data/projects.ts`)
-- 8 page routes (including server + client component splits)
-- 2 SEO files (sitemap.ts, robots.ts)
+## Homepage Section Flow
+1. Hero (id="hero") — dual-role headline, CTAs, GitHub/LinkedIn
+2. Recruiter TL;DR — 4 proof bullets
+3. Featured Projects (id="projects") — 4 proof tiles + 3 project cards
+4. Experience (id="experience") — full work history in HTML
+5. Education (id="education") — OSU + PSU + achievements
+6. Skills (id="skills") — Software/Security tab toggle
+7. Security Preview (id="security") — provable patterns, threat model cards
+8. Contact (id="contact") — email copy, socials
 
 ## Immediate Next Steps
-1. Run `npm run dev` and verify visually
-2. Add real assets (headshot, project screenshots, resume PDF)
-3. Deploy to Vercel
-4. Run Lighthouse audit
-5. Iterate on any visual/performance issues
+1. Add real assets (headshot, screenshots, resume PDF)
+2. Deploy to Vercel
+3. Run Lighthouse audit
+4. Iterate on visual/performance issues
 
 ## Open Questions for User
-- [ ] What's your current city for the site? (Corvallis or Portland area?)
-- [ ] Do you have a professional headshot ready?
-- [ ] Are the WPI and GUMC sites still live? Can we link to them?
-- [ ] Have you done any CTFs, bug bounties, or published security writeups?
-- [ ] Which Oregon university was the Student Ambassador role for?
-- [ ] Do you want a custom domain (e.g., andrewvu.dev)?
-- [ ] Do you have a resume PDF ready to include?
+- [ ] What's your current city for the site?
+- [ ] Do you have a professional headshot?
+- [ ] Are the WPI and GUMC sites still live?
+- [ ] Have you done any CTFs, bug bounties, or security writeups?
+- [ ] Do you have a resume PDF ready?
 
 ## Blockers
-- None — site is fully functional with placeholders
+- None — fully functional with placeholders

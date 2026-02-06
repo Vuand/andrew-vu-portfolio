@@ -1,13 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
-import Link from "next/link";
+import { ArrowDown, Download, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export function Hero() {
+  const scrollToProjects = () => {
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
+      id="hero"
       className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-grid"
       aria-label="Introduction"
     >
@@ -23,7 +28,7 @@ export function Hero() {
           transition={{ duration: 0.6 }}
         >
           <span className="mb-6 inline-block rounded-full border border-border bg-card px-4 py-1.5 font-mono text-xs text-muted-foreground">
-            Computer Science + Cybersecurity @ Oregon State &middot; 2026
+            Bachelors of Science in Computer Science + Cybersecurity Certificate @ Oregon State &middot; 2026
           </span>
         </motion.div>
 
@@ -33,9 +38,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-7xl"
         >
-          I build software that ships
+          Full-stack engineer.
           <br />
-          <span className="gradient-text">&mdash; and stays secure.</span>
+          <span className="gradient-text">Security-first mindset.</span>
         </motion.h1>
 
         <motion.p
@@ -44,9 +49,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl"
         >
-          Full-stack engineer with a security-first mindset. From validated
-          LLM pipelines to fraud-resistant payment infrastructure &mdash; I
-          build what matters.
+          I build reliable software from frontend to infrastructure &mdash;
+          with security designed in, not bolted on. From validated LLM
+          pipelines to fraud-resistant payment systems.
         </motion.p>
 
         <motion.div
@@ -55,18 +60,36 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link href="/projects">
-            <Button variant="primary" size="lg">
-              View Projects
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
+          <Button variant="primary" size="lg" onClick={scrollToProjects}>
+            View Projects
+            <ArrowDown className="h-4 w-4" />
+          </Button>
           <a href="/documents/andrew-vu-resume.pdf" download>
             <Button variant="secondary" size="lg">
               <Download className="h-4 w-4" />
-              Download Resume
+              Resume PDF
             </Button>
           </a>
+          <div className="flex gap-2">
+            <a
+              href={SITE_CONFIG.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="ghost" size="icon" aria-label="GitHub">
+                <Github className="h-5 w-5" />
+              </Button>
+            </a>
+            <a
+              href={SITE_CONFIG.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="ghost" size="icon" aria-label="LinkedIn">
+                <Linkedin className="h-5 w-5" />
+              </Button>
+            </a>
+          </div>
         </motion.div>
       </div>
 

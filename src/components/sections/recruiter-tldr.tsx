@@ -8,33 +8,36 @@ const bullets = [
   {
     icon: Code2,
     label: "Full-stack builder",
-    detail: "Next.js, TypeScript, Python, PostgreSQL — frontend through infrastructure",
+    detail:
+      "Next.js, TypeScript, Python, PostgreSQL — frontend through infrastructure",
   },
   {
     icon: Shield,
     label: "Security in the architecture",
-    detail: "Threat models, HMAC signing, allow-listed execution, append-only ledgers",
+    detail:
+      "Threat models, HMAC signing, allow-listed execution, append-only ledgers",
   },
   {
     icon: Rocket,
     label: "Shipped production systems",
-    detail: "Sole-developer websites, platform migrations, AI automation pipelines",
+    detail:
+      "Sole-developer websites, platform migrations, AI automation pipelines",
   },
   {
     icon: GraduationCap,
     label: "CS + Cybersecurity",
-    detail: "Oregon State BS Computer Science + Cybersecurity Certificate (3.44 GPA, Dean's List)",
+    detail:
+      "Oregon State BS Computer Science + Cybersecurity Certificate (3.44 GPA, Dean's List)",
   },
 ];
 
 export function RecruiterTLDR() {
   return (
-    <section className="py-20 md:py-28" aria-label="Quick overview">
+    <section className="py-16 md:py-24" aria-label="Quick overview">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          label="// quick overview"
+          label="// 30-second overview"
           title="The Short Version"
-          description="What you need to know in 30 seconds."
         />
 
         <Stagger className="grid gap-4 sm:grid-cols-2">
