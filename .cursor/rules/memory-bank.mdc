@@ -1,0 +1,71 @@
+---
+description: Memory Bank — persistent project context for Andrew Vu's personal website
+globs:
+alwaysApply: true
+---
+
+# Memory Bank Rules
+
+## At the Start of Every Session
+
+You MUST read ALL files in `/memory_bank/` before doing any work:
+
+1. `brandAndPositioning.md` — positioning, tone, approved copy
+2. `resumeSource.md` — canonical resume facts (do NOT invent)
+3. `siteMapAndSections.md` — page structure, section order, nav
+4. `projectsCatalog.md` — project details, architecture, security notes
+5. `securityProof.md` — cybersecurity credibility, threat models, claims
+6. `visualDesignSystem.md` — colors, typography, motion, accessibility
+7. `assetsAndLinks.md` — URLs, placeholders, asset checklist
+8. `activeContext.md` — current work, next steps, open questions
+9. `progress.md` — done, in progress, blockers
+10. `decisions.md` — architecture decision records
+
+## Core Rules
+
+### Never Invent Facts
+- Do NOT make up resume details, metrics, dates, or achievements
+- If a fact is missing, use `[TODO: ...]` or `[Add metric: ...]`
+- Only use data from `resumeSource.md` or confirmed by the user
+
+### Before Changing Key Decisions
+- Before modifying site structure, positioning, copy voice, or tech stack:
+  1. Check `decisions.md` for existing ADRs
+  2. Propose the change and rationale
+  3. Add a new ADR entry to `decisions.md`
+
+### After Completing Work
+- Update `activeContext.md` with current state and next steps
+- Update `progress.md` (move items between Done/In Progress/Not Started)
+- If a decision was made, add to `decisions.md`
+
+### If Missing Key Information
+- Ask the user targeted questions
+- Write `[TODO: ...]` placeholders in the code
+- Add the question to `activeContext.md` → "Open Questions for User"
+
+### Confidential Projects (SponsorHub)
+- Never expose or reference private repository code
+- Focus on architecture, invariants, and engineering decisions
+- Always include the confidentiality note on the SponsorHub page
+
+### Copy and Tone
+- Follow tone rules in `brandAndPositioning.md`
+- No fluff words: "passionate," "motivated," "driven," "enthusiastic"
+- Lead with shipped outcomes and proof, not adjectives
+- Use active voice: "Built," "Designed," "Shipped"
+
+### Code Quality
+- TypeScript strict mode
+- Semantic HTML (proper heading hierarchy, landmarks, ARIA)
+- All interactive elements keyboard accessible
+- Respect `prefers-reduced-motion`
+- All colors must use CSS variable tokens (not hardcoded hex)
+
+## Tech Stack Reference
+- Next.js 14+ (App Router) + TypeScript
+- Tailwind CSS v4 (CSS-first config with `@theme inline`)
+- Framer Motion (animations)
+- next-themes (dark/light mode)
+- lucide-react (icons)
+- class-variance-authority + clsx + tailwind-merge (styling utils)
