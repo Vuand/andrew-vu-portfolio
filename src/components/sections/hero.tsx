@@ -34,7 +34,7 @@ export function Hero() {
               transition={{ duration: 0.6 }}
             >
               <span className="mb-8 inline-block rounded-full border border-border bg-card px-5 py-2 font-mono text-sm text-muted-foreground">
-                Bachelor of Science in Computer Science + Cybersecurity Certificate @ Oregon State &middot; 2026
+                Bachelor of Science in Computer Science + Cybersecurity Certificate @ Oregon State University &middot; 2026
               </span>
             </motion.div>
 
@@ -75,7 +75,7 @@ export function Hero() {
                 View Projects
                 <ArrowDown className="h-5 w-5" />
               </Button>
-              <a href="/documents/LatestResume.pdf" download>
+              <a href="/documents/AndrewVu-SWE-Resume.pdf" download>
                 <Button variant="secondary" size="lg">
                   <Download className="h-5 w-5" />
                   Resume PDF

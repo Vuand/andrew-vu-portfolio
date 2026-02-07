@@ -12,8 +12,8 @@ import { Stagger, StaggerItem } from "@/components/ui/motion-wrapper";
 const signals = [
   {
     icon: GraduationCap,
-    label: "CS + Cybersecurity",
-    detail: "Oregon State — BS Computer Science + Cybersecurity Certificate, 3.44 GPA, Dean's List",
+    label: "B.S. in Computer Science + Cybersecurity Certificate",
+    detail: "Oregon State University — B.S. in Computer Science + Cybersecurity Certificate, 3.44 GPA, Dean's List",
   },
   {
     icon: Code2,

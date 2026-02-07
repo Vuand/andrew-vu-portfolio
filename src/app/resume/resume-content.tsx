@@ -20,7 +20,7 @@ export function ResumeContent() {
         {/* Download + links */}
         <FadeIn>
           <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
-            <a href="/documents/LatestResume.pdf" download>
+            <a href="/documents/AndrewVu-SWE-Resume.pdf" download>
               <Button variant="accent">
                 <Download className="h-4 w-4" />
                 Download PDF
@@ -213,7 +213,7 @@ export function ResumeContent() {
             <p className="text-sm text-muted-foreground">
               [Resume PDF embed placeholder — add{" "}
               <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">
-                /public/documents/LatestResume.pdf
+                /public/documents/AndrewVu-SWE-Resume.pdf
               </code>{" "}
               to enable]
             </p>
