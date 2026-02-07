@@ -23,7 +23,7 @@ export function SkillsGrid() {
         <SectionHeading
           label="Technical Skills"
           title="Tools & Technologies"
-          description="Curated by what I've shipped with — not a keyword dump."
+          description="Tools I Use in Production"
         />
 
         {/* Tab toggle */}

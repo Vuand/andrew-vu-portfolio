@@ -36,14 +36,14 @@ export function ContactHome() {
 
               {/* Identity */}
               <div className="min-w-0">
-                <h3 className="text-xl font-bold text-foreground md:text-2xl">
+                <h3 className="text-2xl font-bold text-foreground md:text-3xl">
                   Andrew Vu
                 </h3>
-                <p className="mt-0.5 text-sm text-muted-foreground sm:whitespace-nowrap sm:text-base">
+                <p className="mt-0.5 text-base text-muted-foreground sm:whitespace-nowrap sm:text-lg">
                   Full-Stack Software Engineer &middot; Security-first mindset
                 </p>
-                <p className="mt-1 flex items-center justify-center gap-1 text-sm text-muted-foreground md:justify-start">
-                  <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
+                <p className="mt-1 flex items-center justify-center gap-1 text-base text-muted-foreground md:justify-start">
+                  <MapPin className="h-4 w-4 flex-shrink-0" />
                   Oregon, USA
                 </p>
               </div>
