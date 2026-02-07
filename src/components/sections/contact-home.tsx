@@ -11,11 +11,12 @@ import { SITE_CONFIG } from "@/lib/constants";
 export function ContactHome() {
   return (
     <section id="contact" className="py-14 md:py-20" aria-label="Contact">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           label="Contact"
           title="Let's Build Something Together"
           description="Looking for a full-stack engineer who cares about security and reliability?"
+          className="[&_h2]:text-3xl [&_h2]:sm:text-4xl [&_h2]:md:text-5xl [&_h2]:leading-[1.1]"
         />
 
         <FadeIn>
@@ -23,7 +24,7 @@ export function ContactHome() {
             <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 via-transparent to-purple-500/5" />
 
             {/* Desktop: 3-column grid  |  Mobile: centered stack */}
-            <div className="relative flex flex-col items-center gap-5 px-6 py-7 text-center md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6 md:px-8 md:py-7 md:text-left">
+            <div className="relative flex flex-col items-center gap-5 px-4 py-6 text-center sm:px-6 sm:py-7 md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6 md:px-8 md:py-7 md:text-left">
               {/* Avatar */}
               <Image
                 src="/HeadShot3.jpg"
@@ -38,7 +39,7 @@ export function ContactHome() {
                 <h3 className="text-xl font-bold text-foreground md:text-2xl">
                   Andrew Vu
                 </h3>
-                <p className="mt-0.5 whitespace-nowrap text-base text-muted-foreground">
+                <p className="mt-0.5 text-sm text-muted-foreground sm:whitespace-nowrap sm:text-base">
                   Full-Stack Software Engineer &middot; Security-first mindset
                 </p>
                 <p className="mt-1 flex items-center justify-center gap-1 text-sm text-muted-foreground md:justify-start">
@@ -48,8 +49,8 @@ export function ContactHome() {
               </div>
 
               {/* Actions */}
-              <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center md:w-auto md:justify-end">
-                <a href={`mailto:${SITE_CONFIG.email}`}>
+              <div className="flex w-full flex-col items-stretch gap-2.5 sm:flex-row sm:items-center sm:justify-center md:w-auto md:justify-end">
+                <a href={`mailto:${SITE_CONFIG.email}`} className="w-full sm:w-auto">
                   <Button variant="accent" size="md" className="w-full sm:w-auto">
                     <Mail className="h-4 w-4" />
                     {SITE_CONFIG.email}
@@ -59,6 +60,7 @@ export function ContactHome() {
                   text={SITE_CONFIG.email}
                   variant="secondary"
                   size="md"
+                  className="w-full sm:w-auto"
                   toastMessage="Email copied to clipboard"
                 >
                   Copy Email
