@@ -18,7 +18,7 @@ const signals = [
   {
     icon: Code2,
     label: "Full-Stack Engineer",
-    detail: "Next.js, TypeScript, React, Python, PostgreSQL, REST APIs, Docker, CI/CD",
+    detail: "Python · Java · JavaScript · TypeScript · React · SQL · REST APIs · HTML · CSS · Docker · CI/CD · Git · AWS · GCP",
   },
   {
     icon: Shield,
