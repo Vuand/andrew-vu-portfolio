@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Mail, Github, Linkedin, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -48,43 +48,21 @@ export function ContactHome() {
               </div>
 
               {/* Actions */}
-              <div className="flex w-full flex-col items-center gap-3 md:w-auto md:items-end">
-                <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                  <a href={`mailto:${SITE_CONFIG.email}`}>
-                    <Button variant="accent" size="md" className="w-full sm:w-auto">
-                      <Mail className="h-4 w-4" />
-                      {SITE_CONFIG.email}
-                    </Button>
-                  </a>
-                  <CopyButton
-                    text={SITE_CONFIG.email}
-                    variant="secondary"
-                    size="md"
-                    toastMessage="Email copied to clipboard"
-                  >
-                    Copy Email
-                  </CopyButton>
-                </div>
-                <div className="flex items-center gap-2">
-                  <a
-                    href={SITE_CONFIG.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button variant="ghost" size="icon" aria-label="GitHub">
-                      <Github className="h-5 w-5" />
-                    </Button>
-                  </a>
-                  <a
-                    href={SITE_CONFIG.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button variant="ghost" size="icon" aria-label="LinkedIn">
-                      <Linkedin className="h-5 w-5" />
-                    </Button>
-                  </a>
-                </div>
+              <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center md:w-auto md:justify-end">
+                <a href={`mailto:${SITE_CONFIG.email}`}>
+                  <Button variant="accent" size="md" className="w-full sm:w-auto">
+                    <Mail className="h-4 w-4" />
+                    {SITE_CONFIG.email}
+                  </Button>
+                </a>
+                <CopyButton
+                  text={SITE_CONFIG.email}
+                  variant="secondary"
+                  size="md"
+                  toastMessage="Email copied to clipboard"
+                >
+                  Copy Email
+                </CopyButton>
               </div>
             </div>
           </div>
