@@ -6,6 +6,7 @@ import {
   ExternalLink,
   Lock,
   Shield,
+  Scale,
   // FileText,
   // Image as ImageIcon,
   // Play,
@@ -178,6 +179,22 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               </ul>
             </CaseSection>
           </FadeIn>
+
+          {/* Design Tradeoffs */}
+          {project.designTradeoffs && project.designTradeoffs.length > 0 && (
+            <FadeIn>
+              <CaseSection title="Design Tradeoffs" icon={Scale}>
+                <ul className="space-y-3">
+                  {project.designTradeoffs.map((point, i) => (
+                    <li key={i} className="flex gap-3 text-muted-foreground">
+                      <Scale className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      <span className="leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CaseSection>
+            </FadeIn>
+          )}
 
           {/* Results */}
           <FadeIn>

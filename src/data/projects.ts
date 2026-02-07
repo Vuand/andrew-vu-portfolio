@@ -22,6 +22,7 @@ export interface Project {
   solution: string;
   architecture: string[];
   securityReliability: string[];
+  designTradeoffs?: string[];
   results: string[];
   artifacts: ProjectArtifact[];
 }
@@ -38,9 +39,9 @@ export const PROJECTS: Project[] = [
   {
     slug: "sponsorhub",
     title: "SponsorHub",
-    tagline: "Performance-based creator marketing infrastructure",
+    tagline: "Performance-based creator marketing infrastructure with built-in financial accountability",
     description:
-      "A platform where brands fund campaigns, creators drive verified conversions, and payouts happen only when performance is proven. Every dollar is tracked from deposit to payout through an append-only ledger.",
+      "I'm building the financial infrastructure that makes creator marketing trustworthy — escrow, attribution, verification, and payout in one system. Campaign funds are held in escrow, conversions are verified through platform-controlled mechanisms, and payouts are computed strictly from an immutable audit ledger.",
     tags: ["Full-Stack", "Security", "Infra"],
     tech: [
       "Next.js (App Router)",
@@ -59,32 +60,37 @@ export const PROJECTS: Project[] = [
     image: "/SponsorHub.png",
     confidential: true,
     problem:
-      "Creator marketing lacks accountability. Brands pay upfront with no proof of performance. Creators get stiffed when brands dispute results. No platform enforces funding, attribution, and verification end-to-end.",
+      "The creator marketing space runs on trust and spreadsheets. Brands prepay with no guarantee of results. Creators deliver but have no leverage when payouts are disputed. Attribution is fragmented across third-party pixels and self-reported metrics. There's no single system that enforces financial accountability from dollar-in to dollar-out.",
     solution:
-      "SponsorHub enforces three invariants in code: (1) campaigns cannot go live without confirmed funds in escrow, (2) every conversion is verified through platform-owned attribution artifacts before entering the ledger, and (3) payouts are computed strictly from the append-only ledger — no verification, no payout.",
+      "SponsorHub closes that gap by enforcing three properties end-to-end: campaigns cannot activate without confirmed escrow, conversions are verified through platform-controlled attribution before they count, and payouts are computed strictly from an immutable ledger. These aren't policies — they're system constraints enforced through guarded state transitions and server-side validation. No verification, no payout — enforced in code, not policy.",
     architecture: [
-      "Client → /r redirect (HMAC-signed attribution link) → /v verification ingestion → Append-only event ledger",
-      "Rollup jobs (BullMQ) → Payout computation → Stripe Connect disbursement",
-      "State machines with guards enforce campaign lifecycle: Draft → Funded → Live → Completed → Paid Out",
-      "Each transition requires explicit preconditions — Live requires escrow confirmation from Stripe webhook",
-      "Platform-owned attribution artifacts carry HMAC-signed payloads with campaign/creator identifiers",
-      "Verification events deduplicated by composite key and checked against replay windows",
+      "Designed and implemented campaign lifecycle management with guarded state transitions that enforce funding and verification preconditions before activation",
+      "Built a tamper-evident attribution system where every tracked interaction is signed and validated server-side before recording",
+      "Implemented an immutable event ledger for conversion tracking — all corrections happen through reversible adjustments, never mutations",
+      "Integrated Stripe Connect for escrow and disbursement with idempotent payout processing and retry safety",
+      "Architected async worker pipelines for ledger rollups and payout computation, decoupled from the request path",
+      "Enforced role-based access control across brand, creator, and admin boundaries",
     ],
     securityReliability: [
-      "HMAC-signed attribution artifacts — tamper-evident redirect links and promo codes",
-      "Replay protection — events deduplicated by composite key + time window",
-      "Append-only ledger — no UPDATE/DELETE on conversion events; corrections via compensating entries",
-      "Idempotent Stripe payouts — retry-safe disbursement with idempotency keys",
-      "Role-gated access — Clerk RBAC enforces brand/creator/admin boundaries",
-      "Hashed identifiers — PII never stored in plain text in event payloads",
-      "Funding gate — state machine rejects Live transition without escrow confirmation",
-      "Budget cap enforcement at the ledger rollup layer",
+      "Signed, tamper-evident attribution artifacts validated before ledger entry",
+      "Replay and duplicate protection on all conversion events",
+      "Immutable audit ledger with reversible adjustments — no silent edits",
+      "Idempotent payment operations with retry safety across all disbursement flows",
+      "Role-gated access enforced at every boundary",
+      "Minimal PII exposure — sensitive identifiers hashed at rest",
+      "Budget cap enforcement at the rollup layer",
+      "Property-based validation on state transitions — no illegal lifecycle jumps",
+    ],
+    designTradeoffs: [
+      "Auditability vs. flexibility — chose an immutable ledger with reversible adjustments over mutable records. Corrections are more complex to implement but guarantee a complete, tamper-evident audit trail critical for financial disputes.",
+      "Fraud prevention vs. user friction — server-side attribution verification adds latency to conversion recording but eliminates an entire class of self-report fraud. Prioritized correctness over speed in the verification path.",
+      "Payout correctness vs. latency — payouts are computed from async ledger rollups rather than real-time totals. This introduces a processing delay but ensures every payout is backed by verified, deduplicated events — no double-counts, no race conditions.",
     ],
     results: [
-      "MVP backend complete with state machine enforcement and append-only ledger",
-      "Stripe Connect integration with idempotent payout processing",
-      "Hybrid payout model (base + performance) for creator fairness",
-      "Fraud/risk scoring pipeline architected for conversion validation",
+      "MVP backend complete — lifecycle enforcement, immutable ledger, and payout pipeline operational",
+      "Stripe Connect escrow + disbursement integration deployed with idempotent processing",
+      "Fraud and risk scoring pipeline architected for conversion validation",
+      "Frontend dashboards and integration testing in progress",
     ],
     artifacts: [
       { label: "Architecture Diagram", type: "diagram" },
