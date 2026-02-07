@@ -6,10 +6,10 @@ import {
   ExternalLink,
   Lock,
   Shield,
-  FileText,
-  Image as ImageIcon,
-  Play,
-  AlertTriangle,
+  // FileText,
+  // Image as ImageIcon,
+  // Play,
+  // AlertTriangle,
 } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
@@ -18,12 +18,12 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { FadeIn } from "@/components/ui/motion-wrapper";
 import { SponsorHubDiagram } from "@/components/projects/sponsorhub-diagram";
 
-const artifactIcons = {
-  diagram: FileText,
-  screenshot: ImageIcon,
-  video: Play,
-  "threat-model": AlertTriangle,
-};
+// const artifactIcons = {
+//   diagram: FileText,
+//   screenshot: ImageIcon,
+//   video: Play,
+//   "threat-model": AlertTriangle,
+// };
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
   return (
@@ -206,7 +206,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             </CaseSection>
           </FadeIn>
 
-          {/* Artifacts */}
+          {/* Artifacts — commented out until proper media is added
           {project.artifacts.length > 0 && (
             <FadeIn>
               <CaseSection title="Artifacts">
@@ -236,6 +236,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               </CaseSection>
             </FadeIn>
           )}
+          */}
         </div>
       </article>
     </>

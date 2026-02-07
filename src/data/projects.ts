@@ -56,6 +56,7 @@ export const PROJECTS: Project[] = [
     role: "Sole Engineer & Architect",
     period: "2025 – Present",
     status: "MVP backend built; frontend dashboards + testing next",
+    image: "/SponsorHub.png",
     confidential: true,
     problem:
       "Creator marketing lacks accountability. Brands pay upfront with no proof of performance. Creators get stiffed when brands dispute results. No platform enforces funding, attribution, and verification end-to-end.",
