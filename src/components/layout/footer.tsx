@@ -71,7 +71,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Andrew Vu.
+          &copy; {new Date().getFullYear()} Andrew Vu
         </div>
       </div>
     </footer>
