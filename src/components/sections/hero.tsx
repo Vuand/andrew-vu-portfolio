@@ -60,9 +60,9 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
             >
-              I build reliable full-stack applications from frontend to infrastructure, 
-              with security designed in. My experience 
-              includes secure APIs, access control, and data protection through hands-on projects.
+              I build reliable software from frontend to infrastructure &mdash;
+              with security designed in, not bolted on. From validated LLM
+              pipelines to fraud-resistant payment systems.
             </motion.p>
 
             <motion.div
