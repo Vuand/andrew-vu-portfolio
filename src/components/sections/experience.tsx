@@ -57,10 +57,10 @@ const roles: Role[] = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20 md:py-28" aria-label="Work experience">
+    <section id="experience" className="py-14 md:py-20" aria-label="Work experience">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          label="// experience"
+          label="Experience"
           title="Where I've Worked"
           align="left"
         />

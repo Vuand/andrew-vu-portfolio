@@ -15,6 +15,7 @@ export interface Project {
   role: string;
   period: string;
   status: string;
+  image?: string;
   confidential?: boolean;
   links?: { label: string; href: string }[];
   problem: string;
@@ -95,6 +96,7 @@ export const PROJECTS: Project[] = [
     tagline: "Natural language to secure smart-home automation",
     description:
       "Senior capstone project converting natural language commands into validated JSON actions for Home Assistant. Secure execution pipeline with allow-listed services, entity validation, and robust error handling.",
+    image: "/HAArchitecture.png",
     tags: ["AI", "Security", "Full-Stack"],
     tech: [
       "Python",
@@ -145,6 +147,7 @@ export const PROJECTS: Project[] = [
     tagline: "Full-stack org website with digital library checkout",
     description:
       "Designed, built, and maintained an organization website end-to-end as sole developer. Features an API-driven digital library checkout system, secure payment integration, and scalable CMS workflows.",
+    image: "/WPI.png",
     tags: ["Full-Stack", "Web"],
     tech: [
       "WordPress (Elementor Pro)",
@@ -188,6 +191,7 @@ export const PROJECTS: Project[] = [
     tagline: "Zero-downtime Wix-to-Framer migration",
     description:
       "Led a full platform migration from Wix to Framer. Built a component-based web architecture with reusable UI components, structured content models, and secure payment integration — with zero downtime.",
+    image: "/GreshamUMC.png",
     tags: ["Web", "Full-Stack"],
     tech: [
       "Framer",

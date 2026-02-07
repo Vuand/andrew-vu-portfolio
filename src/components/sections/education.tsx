@@ -25,12 +25,12 @@ export function Education() {
   return (
     <section
       id="education"
-      className="py-20 md:py-28 bg-muted/30"
+      className="py-14 md:py-20 bg-muted/30"
       aria-label="Education"
     >
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          label="// education"
+          label="Education"
           title="Academic Background"
           align="left"
         />

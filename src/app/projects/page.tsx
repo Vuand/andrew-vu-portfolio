@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Lock } from "lucide-react";
 import { PROJECTS, ALL_TAGS, type ProjectTag } from "@/data/projects";
@@ -22,7 +23,7 @@ export default function ProjectsPage() {
     <div className="pt-24 pb-20">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          label="// projects"
+          label="Projects"
           title="What I've Built"
           description="End-to-end systems — designed, built, shipped, and maintained."
         />
@@ -65,17 +66,25 @@ export default function ProjectsPage() {
                 className="block h-full"
               >
                 <Card className="flex h-full flex-col">
-                  {/* Thumbnail placeholder */}
-                  <div className="mb-4 flex h-48 items-center justify-center rounded-lg bg-muted/50">
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {project.confidential ? (
-                        <span className="flex items-center gap-1.5">
-                          <Lock className="h-3.5 w-3.5" /> confidential
-                        </span>
-                      ) : (
-                        "[screenshot placeholder]"
-                      )}
-                    </span>
+                  <div className="relative mb-4 h-48 overflow-hidden rounded-lg bg-muted/50">
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} screenshot`}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <span className="flex h-full items-center justify-center font-mono text-xs text-muted-foreground">
+                        {project.confidential ? (
+                          <span className="flex items-center gap-1.5">
+                            <Lock className="h-3.5 w-3.5" /> confidential
+                          </span>
+                        ) : (
+                          "[screenshot]"
+                        )}
+                      </span>
+                    )}
                   </div>
 
                   <div className="flex-1">

@@ -13,7 +13,6 @@ export const SITE_CONFIG = {
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/security", label: "Security" },
   { href: "/resume", label: "Resume" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -24,7 +23,6 @@ export const HOME_SECTIONS = [
   { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
   { id: "skills", label: "Skills" },
-  { id: "security", label: "Security" },
   { id: "contact", label: "Contact" },
 ] as const;
 

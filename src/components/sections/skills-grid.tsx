@@ -16,12 +16,12 @@ export function SkillsGrid() {
   return (
     <section
       id="skills"
-      className="py-20 md:py-28 bg-muted/30"
+      className="py-14 md:py-20 bg-muted/30"
       aria-label="Technical skills"
     >
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          label="// technical skills"
+          label="Technical Skills"
           title="Tools & Technologies"
           description="Curated by what I've shipped with — not a keyword dump."
         />

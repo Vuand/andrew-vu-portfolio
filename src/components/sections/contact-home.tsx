@@ -10,10 +10,10 @@ import { SITE_CONFIG } from "@/lib/constants";
 
 export function ContactHome() {
   return (
-    <section id="contact" className="py-20 md:py-28" aria-label="Contact">
+    <section id="contact" className="py-14 md:py-20" aria-label="Contact">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          label="// contact"
+          label="Contact"
           title="Let's Build Something Together"
           description="Looking for a full-stack engineer who cares about security and reliability?"
         />

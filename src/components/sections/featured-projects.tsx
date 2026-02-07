@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Lock, Shield, Cpu, Globe } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
@@ -40,10 +41,10 @@ const proofTiles = [
 
 export function FeaturedProjects() {
   return (
-    <section id="projects" className="py-20 md:py-28 bg-muted/30" aria-label="Featured projects">
+    <section id="projects" className="py-14 md:py-20 bg-muted/30" aria-label="Featured projects">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          label="// featured work"
+          label="Projects"
           title="Selected Projects"
           description="End-to-end systems — designed, built, shipped."
         />
@@ -77,16 +78,25 @@ export function FeaturedProjects() {
                 className="block h-full"
               >
                 <Card className="flex h-full flex-col justify-between">
-                  <div className="mb-4 flex h-40 items-center justify-center rounded-lg bg-muted/50">
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {project.confidential ? (
-                        <span className="flex items-center gap-1.5">
-                          <Lock className="h-3.5 w-3.5" /> confidential
-                        </span>
-                      ) : (
-                        "[screenshot placeholder]"
-                      )}
-                    </span>
+                  <div className="relative mb-4 h-40 overflow-hidden rounded-lg bg-muted/50">
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} screenshot`}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <span className="flex h-full items-center justify-center font-mono text-xs text-muted-foreground">
+                        {project.confidential ? (
+                          <span className="flex items-center gap-1.5">
+                            <Lock className="h-3.5 w-3.5" /> confidential
+                          </span>
+                        ) : (
+                          "[screenshot]"
+                        )}
+                      </span>
+                    )}
                   </div>
 
                   <div className="flex-1">
