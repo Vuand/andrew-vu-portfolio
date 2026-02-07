@@ -53,15 +53,15 @@ export function FeaturedProjects() {
         <Stagger className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {proofTiles.map((tile) => (
             <StaggerItem key={tile.title}>
-              <div className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent/30 h-full">
+              <div className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent/30 h-full">
                 <tile.icon className="mb-3 h-5 w-5 text-accent" />
-                <h3 className="text-sm font-semibold text-foreground">
+                <h3 className="text-base font-semibold text-foreground">
                   {tile.title}
                 </h3>
-                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                   {tile.detail}
                 </p>
-                <span className="mt-2 inline-block font-mono text-[10px] text-accent">
+                <span className="mt-2 inline-block font-mono text-xs text-accent">
                   {tile.project}
                 </span>
               </div>
@@ -110,15 +110,15 @@ export function FeaturedProjects() {
                         <Badge variant="warning">Confidential</Badge>
                       )}
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground">
+                    <h3 className="text-xl font-semibold text-foreground">
                       {project.title}
                     </h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
+                    <p className="mt-1 text-base text-muted-foreground">
                       {project.tagline}
                     </p>
                   </div>
 
-                  <div className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
+                  <div className="mt-4 flex items-center gap-1 text-base font-medium text-accent">
                     Read case study <ArrowRight className="h-3.5 w-3.5" />
                   </div>
                 </Card>

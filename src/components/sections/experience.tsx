@@ -72,19 +72,19 @@ export function Experience() {
                 <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full border-2 border-accent bg-background" />
 
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <h3 className="text-xl font-semibold text-foreground">
                     {role.title}
                   </h3>
-                  <span className="font-mono text-xs text-muted-foreground">
+                  <span className="font-mono text-sm text-muted-foreground">
                     {role.period}
                   </span>
                 </div>
 
-                <p className="text-sm font-medium text-accent">
+                <p className="text-base font-medium text-accent">
                   {role.company}
                 </p>
-                <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
-                  <MapPin className="h-3 w-3" />
+                <p className="mt-0.5 flex items-center gap-1 text-sm text-muted-foreground">
+                  <MapPin className="h-3.5 w-3.5" />
                   {role.location}
                 </p>
 
@@ -102,7 +102,7 @@ export function Experience() {
                   {role.bullets.map((bullet, j) => (
                     <li
                       key={j}
-                      className="flex gap-3 text-sm text-muted-foreground leading-relaxed"
+                      className="flex gap-3 text-base text-muted-foreground leading-relaxed"
                     >
                       <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                       {bullet}

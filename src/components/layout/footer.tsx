@@ -15,14 +15,14 @@ export function Footer() {
             >
               andrew<span className="text-accent">vu</span>
             </Link>
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="mt-2 text-base text-muted-foreground">
               Full-stack engineer. Security-first mindset.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">
+            <h3 className="mb-3 text-base font-semibold text-foreground">
               Pages
             </h3>
             <ul className="space-y-2">
@@ -30,7 +30,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-base text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
                   </Link>
@@ -41,7 +41,7 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">
+            <h3 className="mb-3 text-base font-semibold text-foreground">
               Connect
             </h3>
             <div className="flex gap-3">
@@ -64,7 +64,7 @@ export function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mt-4 text-base text-muted-foreground">
               {SITE_CONFIG.email}
             </p>
           </div>

@@ -32,7 +32,7 @@ export function SkillsGrid() {
             <button
               onClick={() => setActiveTab("software")}
               className={cn(
-                "rounded-md px-5 py-2 text-sm font-medium transition-colors cursor-pointer",
+                "rounded-md px-6 py-2.5 text-base font-medium transition-colors cursor-pointer",
                 activeTab === "software"
                   ? "bg-accent text-accent-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -43,7 +43,7 @@ export function SkillsGrid() {
             <button
               onClick={() => setActiveTab("security")}
               className={cn(
-                "rounded-md px-5 py-2 text-sm font-medium transition-colors cursor-pointer",
+                "rounded-md px-6 py-2.5 text-base font-medium transition-colors cursor-pointer",
                 activeTab === "security"
                   ? "bg-accent text-accent-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -57,15 +57,15 @@ export function SkillsGrid() {
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" key={activeTab}>
           {categories.map((cat) => (
             <StaggerItem key={cat.name}>
-              <div className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent/30 h-full">
-                <h3 className="mb-3 font-mono text-xs font-semibold uppercase tracking-wider text-accent">
+              <div className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent/30 h-full">
+                <h3 className="mb-3 font-mono text-sm font-semibold uppercase tracking-wider text-accent">
                   {cat.name}
                 </h3>
-                <ul className="space-y-1.5">
+                <ul className="space-y-2">
                   {cat.skills.map((skill) => (
                     <li
                       key={skill}
-                      className="text-sm text-muted-foreground"
+                      className="text-base text-muted-foreground"
                     >
                       {skill}
                     </li>

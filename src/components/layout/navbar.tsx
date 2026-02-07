@@ -68,7 +68,7 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight text-foreground transition-opacity hover:opacity-70"
+          className="text-xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-70"
         >
           andrew<span className="text-accent">vu</span>
         </Link>
@@ -81,7 +81,7 @@ export function Navbar() {
                   key={section.id}
                   onClick={() => scrollTo(section.id)}
                   className={cn(
-                    "rounded-lg px-3 py-2 text-sm font-medium transition-colors cursor-pointer",
+                    "rounded-lg px-3 py-2 text-base font-medium transition-colors cursor-pointer",
                     activeSection === section.id
                       ? "text-accent"
                       : "text-muted-foreground hover:text-foreground"
@@ -100,7 +100,7 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                      "rounded-lg px-3 py-2 text-base font-medium transition-colors",
                       isActive
                         ? "text-accent"
                         : "text-muted-foreground hover:text-foreground"
@@ -150,7 +150,7 @@ export function Navbar() {
                       key={section.id}
                       onClick={() => scrollTo(section.id)}
                       className={cn(
-                        "rounded-lg px-3 py-3 text-left text-sm font-medium transition-colors cursor-pointer",
+                        "rounded-lg px-3 py-3 text-left text-base font-medium transition-colors cursor-pointer",
                         activeSection === section.id
                           ? "bg-accent/10 text-accent"
                           : "text-muted-foreground hover:text-foreground"
@@ -169,7 +169,7 @@ export function Navbar() {
                         key={link.href}
                         href={link.href}
                         className={cn(
-                          "rounded-lg px-3 py-3 text-sm font-medium transition-colors",
+                          "rounded-lg px-3 py-3 text-base font-medium transition-colors",
                           isActive
                             ? "bg-accent/10 text-accent"
                             : "text-muted-foreground hover:text-foreground"

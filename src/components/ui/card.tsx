@@ -17,7 +17,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           whileHover={{ y: -2 }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent/30",
+            "rounded-xl border border-border bg-card p-7 transition-colors hover:border-accent/30",
             className
           )}
           {...(props as React.ComponentProps<typeof motion.div>)}
@@ -30,7 +30,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-xl border border-border bg-card p-6",
+          "rounded-xl border border-border bg-card p-7",
           className
         )}
         {...props}

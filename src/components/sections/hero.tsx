@@ -23,9 +23,9 @@ export function Hero() {
         <div className="h-[500px] w-[500px] rounded-full bg-accent/5 blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 py-32">
+      <div className="relative mx-auto max-w-6xl px-6 py-28">
         {/* Two-column layout: text left, photo right */}
-        <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
+        <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-14">
           {/* Text column */}
           <div className="flex-1 text-center md:text-left">
             <motion.div
@@ -33,8 +33,8 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="mb-6 inline-block rounded-full border border-border bg-card px-4 py-1.5 font-mono text-xs text-muted-foreground">
-                Bachelors of Science in Computer Science + Cybersecurity Certificate @ Oregon State &middot; 2026
+              <span className="mb-8 inline-block rounded-full border border-border bg-card px-5 py-2 font-mono text-sm text-muted-foreground">
+                Bachelor of Science in Computer Science + Cybersecurity Certificate @ Oregon State &middot; 2026
               </span>
             </motion.div>
 
@@ -42,7 +42,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="max-w-2xl text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-7xl"
+              className="max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-5xl md:text-[4.25rem]"
             >
               Full-stack software engineer.
               <br />
@@ -58,7 +58,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl"
+              className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
             >
               I build reliable software from frontend to infrastructure &mdash;
               with security designed in, not bolted on. From validated LLM
@@ -73,11 +73,11 @@ export function Hero() {
             >
               <Button variant="primary" size="lg" onClick={scrollToProjects}>
                 View Projects
-                <ArrowDown className="h-4 w-4" />
+                <ArrowDown className="h-5 w-5" />
               </Button>
-              <a href="/documents/andrew-vu-resume.pdf" download>
+              <a href="/documents/LatestResume.pdf" download>
                 <Button variant="secondary" size="lg">
-                  <Download className="h-4 w-4" />
+                  <Download className="h-5 w-5" />
                   Resume PDF
                 </Button>
               </a>
@@ -88,7 +88,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                 >
                   <Button variant="ghost" size="icon" aria-label="GitHub">
-                    <Github className="h-5 w-5" />
+                    <Github className="h-[22px] w-[22px]" />
                   </Button>
                 </a>
                 <a
@@ -97,7 +97,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                 >
                   <Button variant="ghost" size="icon" aria-label="LinkedIn">
-                    <Linkedin className="h-5 w-5" />
+                    <Linkedin className="h-[22px] w-[22px]" />
                   </Button>
                 </a>
               </div>

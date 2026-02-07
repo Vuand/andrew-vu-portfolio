@@ -38,25 +38,25 @@ export function Education() {
         <div className="space-y-10">
           {/* Oregon State */}
           <FadeIn>
-            <div className="rounded-xl border border-border bg-card p-6 md:p-8">
+            <div className="rounded-xl border border-border bg-card p-7 md:p-9">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <GraduationCap className="h-5 w-5 text-accent" />
-                    <h3 className="text-xl font-bold text-foreground">
+                    <GraduationCap className="h-6 w-6 text-accent" />
+                    <h3 className="text-2xl font-bold text-foreground">
                       Oregon State University
                     </h3>
                   </div>
-                  <p className="mt-1 text-sm font-medium text-foreground">
-                    BS Computer Science + Cybersecurity Certificate
+                  <p className="mt-1 text-base font-medium text-foreground">
+                    Bachelor of Science in Computer Science + Cybersecurity Certificate
                   </p>
-                  <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
-                    <MapPin className="h-3 w-3" />
+                  <p className="mt-0.5 flex items-center gap-1 text-sm text-muted-foreground">
+                    <MapPin className="h-3.5 w-3.5" />
                     Corvallis, Oregon
                   </p>
                 </div>
                 <div className="text-right">
-                  <span className="font-mono text-xs text-muted-foreground">
+                  <span className="font-mono text-sm text-muted-foreground">
                     Sep 2022 – Jun 2026
                   </span>
                   <div className="mt-1 flex gap-2">
@@ -71,10 +71,10 @@ export function Education() {
 
               {/* Capstone */}
               <div className="mt-6 rounded-lg border border-accent/20 bg-accent/5 p-4">
-                <h4 className="text-sm font-semibold text-foreground">
+                <h4 className="text-base font-semibold text-foreground">
                   Senior Capstone: AI-Powered Home Assistant Integration
                 </h4>
-                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                <p className="mt-1 text-base text-muted-foreground leading-relaxed">
                   Building a secure pipeline that converts natural language
                   commands into validated JSON actions for Home Assistant via
                   GPT-4o. Features allow-listed service execution, entity
@@ -99,7 +99,7 @@ export function Education() {
 
               {/* Coursework */}
               <div className="mt-6">
-                <h4 className="mb-2 text-sm font-semibold text-foreground">
+                <h4 className="mb-2 text-base font-semibold text-foreground">
                   Key Coursework
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
@@ -115,28 +115,28 @@ export function Education() {
 
           {/* Portland State */}
           <FadeIn delay={0.05}>
-            <div className="rounded-xl border border-border bg-card p-6 md:p-8">
+            <div className="rounded-xl border border-border bg-card p-7 md:p-9">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <GraduationCap className="h-5 w-5 text-accent" />
-                    <h3 className="text-xl font-bold text-foreground">
+                    <GraduationCap className="h-6 w-6 text-accent" />
+                    <h3 className="text-2xl font-bold text-foreground">
                       Portland State University
                     </h3>
                   </div>
-                  <p className="mt-1 text-sm font-medium text-foreground">
-                    BS Computer Science (transferred)
+                  <p className="mt-1 text-base font-medium text-foreground">
+                    Bachelor of Science in Computer Science (transferred)
                   </p>
-                  <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
-                    <MapPin className="h-3 w-3" />
+                  <p className="mt-0.5 flex items-center gap-1 text-sm text-muted-foreground">
+                    <MapPin className="h-3.5 w-3.5" />
                     Portland, Oregon
                   </p>
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">
+                <span className="font-mono text-sm text-muted-foreground">
                   Sep 2020 – Jun 2022
                 </span>
               </div>
-              <p className="mt-3 text-sm text-muted-foreground">
+              <p className="mt-3 text-base text-muted-foreground">
                 Completed CS prerequisite coursework. NCAA Division I
                 Men&apos;s Tennis Team member.
               </p>
@@ -145,12 +145,12 @@ export function Education() {
 
           {/* Achievements */}
           <FadeIn delay={0.1}>
-            <div className="rounded-xl border border-border bg-card p-6 md:p-8">
-              <h3 className="flex items-center gap-2 text-lg font-bold text-foreground">
-                <Award className="h-5 w-5 text-accent" />
+            <div className="rounded-xl border border-border bg-card p-7 md:p-9">
+              <h3 className="flex items-center gap-2 text-xl font-bold text-foreground">
+                <Award className="h-6 w-6 text-accent" />
                 Achievements & Leadership
               </h3>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <ul className="mt-4 space-y-2 text-base text-muted-foreground">
                 <li className="flex gap-3">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                   <strong className="text-foreground">NCAA Division I</strong>{" "}

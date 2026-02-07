@@ -23,25 +23,25 @@ export function ContactHome() {
             <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 via-transparent to-purple-500/5" />
 
             {/* Desktop: 3-column grid  |  Mobile: centered stack */}
-            <div className="relative flex flex-col items-center gap-6 px-8 py-8 text-center md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8 md:px-10 md:py-8 md:text-left">
+            <div className="relative flex flex-col items-center gap-5 px-6 py-7 text-center md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6 md:px-8 md:py-7 md:text-left">
               {/* Avatar */}
               <Image
                 src="/HeadShot3.jpg"
                 alt="Andrew Vu — Full-Stack Software Engineer"
                 width={112}
                 height={112}
-                className="h-[72px] w-[72px] rounded-xl object-cover object-center shadow-md shadow-accent/10 ring-2 ring-border md:h-[104px] md:w-[104px]"
+                className="h-[80px] w-[80px] rounded-xl object-cover object-center shadow-md shadow-accent/10 ring-2 ring-border md:h-[96px] md:w-[96px]"
               />
 
               {/* Identity */}
               <div className="min-w-0">
-                <h3 className="text-lg font-bold text-foreground md:text-xl">
+                <h3 className="text-xl font-bold text-foreground md:text-2xl">
                   Andrew Vu
                 </h3>
-                <p className="mt-0.5 whitespace-nowrap text-sm text-muted-foreground">
+                <p className="mt-0.5 whitespace-nowrap text-base text-muted-foreground">
                   Full-Stack Software Engineer &middot; Security-first mindset
                 </p>
-                <p className="mt-1 flex items-center justify-center gap-1 text-xs text-muted-foreground md:justify-start">
+                <p className="mt-1 flex items-center justify-center gap-1 text-sm text-muted-foreground md:justify-start">
                   <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
                   Oregon, USA
                 </p>
@@ -51,7 +51,7 @@ export function ContactHome() {
               <div className="flex w-full flex-col items-center gap-3 md:w-auto md:items-end">
                 <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                   <a href={`mailto:${SITE_CONFIG.email}`}>
-                    <Button variant="accent" size="lg" className="w-full sm:w-auto">
+                    <Button variant="accent" size="md" className="w-full sm:w-auto">
                       <Mail className="h-4 w-4" />
                       {SITE_CONFIG.email}
                     </Button>
@@ -59,7 +59,7 @@ export function ContactHome() {
                   <CopyButton
                     text={SITE_CONFIG.email}
                     variant="secondary"
-                    size="lg"
+                    size="md"
                     toastMessage="Email copied to clipboard"
                   >
                     Copy Email

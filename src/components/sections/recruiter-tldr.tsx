@@ -44,15 +44,23 @@ export function RecruiterTLDR() {
           transition={{ duration: 0.5 }}
           className="mb-8 max-w-3xl"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
             About Me
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-foreground/80 md:text-lg">
+          <p className="mt-4 text-lg leading-relaxed text-foreground/80 md:text-xl">
             I&rsquo;m a Computer Science student at Oregon State University pursuing
-            a Cybersecurity Certificate (graduating June 2026). I build
-            full-stack software with a security-first mindset, backed by
-            hands-on projects across systems, web, and cloud. Outside of
-            coding, I&rsquo;m usually playing tennis or chasing a new adventure.
+            a Bachelor of Science in Computer Science along with a Cybersecurity
+            Certificate, graduating in June 2026. I have a strong foundation in
+            programming, algorithms, data structures, cloud technologies, AI/ML,
+            and cybersecurity, supported by hands-on academic and personal
+            projects. I enjoy building full-stack applications with a
+            security-first mindset across systems, web, and cloud environments.
+            I&rsquo;m motivated, curious, and passionate about continuous learning,
+            problem-solving, and working in collaborative environments. Outside
+            of tech, I enjoy playing tennis, working out at the gym, and
+            exploring new experiences. I&rsquo;m currently seeking entry-level roles
+            in software or cybersecurity engineering where I can apply my skills
+            and gain real-world industry experience.
           </p>
         </motion.div>
 
@@ -60,15 +68,15 @@ export function RecruiterTLDR() {
         <Stagger className="grid gap-3 sm:grid-cols-2">
           {signals.map((item) => (
             <StaggerItem key={item.label}>
-              <div className="flex gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-accent/30">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+              <div className="flex gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent/30">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-accent/10">
                   <item.icon className="h-5 w-5 text-accent" />
                 </div>
                 <div>
-                  <h3 className="text-[15px] font-semibold text-foreground">
+                  <h3 className="text-lg font-semibold text-foreground">
                     {item.label}
                   </h3>
-                  <p className="mt-0.5 text-sm leading-snug text-foreground/60">
+                  <p className="mt-0.5 text-base leading-snug text-foreground/60">
                     {item.detail}
                   </p>
                 </div>

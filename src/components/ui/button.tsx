@@ -17,10 +17,10 @@ const buttonVariants = cva(
           "bg-accent text-accent-foreground hover:opacity-90 active:scale-[0.98]",
       },
       size: {
-        sm: "h-9 px-4 text-sm",
-        md: "h-11 px-6 text-sm",
-        lg: "h-12 px-8 text-base",
-        icon: "h-10 w-10",
+        sm: "h-10 px-4 text-sm",
+        md: "h-12 px-6 text-base",
+        lg: "h-13 px-8 text-lg",
+        icon: "h-11 w-11",
       },
     },
     defaultVariants: {
