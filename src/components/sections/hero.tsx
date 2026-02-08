@@ -18,9 +18,9 @@ export function Hero() {
       className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-grid"
       aria-label="Introduction"
     >
-      {/* Gradient background orb */}
+      {/* Gradient background orb — smaller blur on mobile for GPU perf */}
       <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="h-[500px] w-[500px] rounded-full bg-accent/5 blur-[120px]" />
+        <div className="h-[300px] w-[300px] rounded-full bg-accent/5 blur-[60px] md:h-[500px] md:w-[500px] md:blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-28">
@@ -29,9 +29,9 @@ export function Hero() {
           {/* Text column */}
           <div className="flex-1 text-center md:text-left">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.4 }}
             >
               <span className="mb-8 inline-block rounded-full border border-border bg-card px-5 py-2 font-mono text-sm text-muted-foreground">
                 Bachelor of Science in Computer Science + Cybersecurity Certificate @ Oregon State University &middot; 2026
@@ -39,9 +39,9 @@ export function Hero() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.4, delay: 0.08 }}
               className="max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-5xl md:text-[4.25rem]"
             >
               Full-stack software engineer.
@@ -55,9 +55,9 @@ export function Hero() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
               className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
             >
               I build reliable software from frontend to infrastructure &mdash;
@@ -66,9 +66,9 @@ export function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:items-start"
             >
               <Button variant="primary" size="lg" onClick={scrollToProjects}>
@@ -106,9 +106,9 @@ export function Hero() {
 
           {/* Photo column */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="flex-shrink-0"
           >
             <div className="relative">
@@ -118,8 +118,8 @@ export function Hero() {
                 alt="Andrew Vu"
                 width={340}
                 height={420}
-                className="relative rounded-2xl border-2 border-border object-cover shadow-2xl"
-                style={{ width: 340, height: 420 }}
+                sizes="(max-width: 768px) 260px, 340px"
+                className="relative h-[340px] w-[260px] rounded-2xl border-2 border-border object-cover shadow-2xl md:h-[420px] md:w-[340px]"
                 priority
               />
             </div>

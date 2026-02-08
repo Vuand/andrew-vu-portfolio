@@ -22,26 +22,43 @@ export function GlitchText({
 }: GlitchTextProps) {
   const [display, setDisplay] = useState("");
   const [started, setStarted] = useState(false);
+  const [prefersReduced, setPrefersReduced] = useState(false);
   const revealed = useRef(0);
-  const frameRef = useRef<number | null>(null);
+  const rafRef = useRef<number>(0);
+  const lastTime = useRef(0);
 
-  const animate = useCallback(() => {
-    if (revealed.current >= text.length) {
-      setDisplay(text);
-      return;
-    }
+  // Detect prefers-reduced-motion
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReduced(mq.matches);
+  }, []);
 
-    const locked = text.slice(0, revealed.current);
-    const remaining = text.length - revealed.current;
-    const scrambled = Array.from({ length: Math.min(remaining, 8) }, () =>
-      CHARS[Math.floor(Math.random() * CHARS.length)]
-    ).join("");
+  const animate = useCallback(
+    (timestamp: number) => {
+      if (revealed.current >= text.length) {
+        setDisplay(text);
+        return;
+      }
 
-    setDisplay(locked + scrambled);
+      // Throttle updates to `speed` interval using rAF
+      if (timestamp - lastTime.current < speed) {
+        rafRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastTime.current = timestamp;
 
-    revealed.current += 1;
-    frameRef.current = window.setTimeout(animate, speed);
-  }, [text, speed]);
+      const locked = text.slice(0, revealed.current);
+      const remaining = text.length - revealed.current;
+      const scrambled = Array.from({ length: Math.min(remaining, 4) }, () =>
+        CHARS[Math.floor(Math.random() * CHARS.length)]
+      ).join("");
+
+      setDisplay(locked + scrambled);
+      revealed.current += 1;
+      rafRef.current = requestAnimationFrame(animate);
+    },
+    [text, speed]
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => setStarted(true), delay);
@@ -50,12 +67,18 @@ export function GlitchText({
 
   useEffect(() => {
     if (!started) return;
+
+    // Skip animation entirely for reduced-motion users
+    if (prefersReduced) {
+      setDisplay(text);
+      return;
+    }
+
     revealed.current = 0;
-    animate();
-    return () => {
-      if (frameRef.current) clearTimeout(frameRef.current);
-    };
-  }, [started, animate]);
+    lastTime.current = 0;
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [started, animate, prefersReduced, text]);
 
   return (
     <Tag className={cn("font-mono", className)} aria-label={text}>
