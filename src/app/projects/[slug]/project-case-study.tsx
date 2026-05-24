@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -222,6 +223,37 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               </div>
             </CaseSection>
           </FadeIn>
+
+          {/* Screenshots */}
+          {project.screenshots && project.screenshots.length > 0 && (
+            <FadeIn>
+              <CaseSection title="Screenshots">
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                  {project.screenshots.map((shot) => (
+                    <figure
+                      key={shot.src}
+                      className="overflow-hidden rounded-2xl border border-border bg-muted/30"
+                    >
+                      <div className="relative aspect-[9/19.5] bg-muted">
+                        <Image
+                          src={shot.src}
+                          alt={shot.alt}
+                          fill
+                          sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw"
+                          className="object-cover"
+                        />
+                      </div>
+                      {shot.caption && (
+                        <figcaption className="px-3 py-2.5 text-xs leading-snug text-muted-foreground">
+                          {shot.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ))}
+                </div>
+              </CaseSection>
+            </FadeIn>
+          )}
 
           {/* Artifacts — commented out until proper media is added
           {project.artifacts.length > 0 && (

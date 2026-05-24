@@ -5,6 +5,13 @@ export interface ProjectArtifact {
   type: "diagram" | "screenshot" | "video" | "threat-model";
 }
 
+export interface ProjectScreenshot {
+  src: string;
+  alt: string;
+  caption?: string;
+  orientation?: "portrait" | "landscape";
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -25,6 +32,7 @@ export interface Project {
   designTradeoffs?: string[];
   results: string[];
   artifacts: ProjectArtifact[];
+  screenshots?: ProjectScreenshot[];
 }
 
 export const ALL_TAGS: ProjectTag[] = [
@@ -234,6 +242,103 @@ export const PROJECTS: Project[] = [
       "Enabled secure online giving via PayPal",
     ],
     artifacts: [{ label: "Screenshots", type: "screenshot" }],
+  },
+  {
+    slug: "stroke-vision",
+    title: "StrokeVision",
+    tagline: "Your AI tennis coach in your pocket — for every stroke",
+    description:
+      "An AI tennis coach that watches your swing on video, identifies the one or two things that matter most this session, and coaches you through fixing them — with the why behind every cue. Built for the recreational player who practices far more often than they can afford a lesson.",
+    image: "/strokevision-stroke-index.png",
+    tags: ["AI", "Full-Stack"],
+    tech: [
+      "React Native (Expo)",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Computer Vision",
+      "Pose Estimation",
+      "AWS S3",
+      "Async Worker Pipeline",
+    ],
+    role: "Co-Founder & Engineer — Early-Stage Startup",
+    period: "Mar 2026 – Present",
+    status: "V1 (forehand) approaching TestFlight; multi-stroke roadmap in progress",
+    confidential: true,
+    screenshots: [
+      {
+        src: "/strokevision-onboarding-1.png",
+        alt: "StrokeVision onboarding — Record",
+        caption: "01 · Record — film one forehand from the side.",
+      },
+      {
+        src: "/strokevision-onboarding-2.png",
+        alt: "StrokeVision onboarding — Feedback",
+        caption: "02 · Feedback — tips you can act on, in plain language.",
+      },
+      {
+        src: "/strokevision-onboarding-3.png",
+        alt: "StrokeVision onboarding — Compare",
+        caption: "03 · Compare — see where your form diverges from a pro reference.",
+      },
+      {
+        src: "/strokevision-onboarding-4.png",
+        alt: "StrokeVision onboarding — Scope & limits",
+        caption: "04 · Scope & limits — a training aid, within honest limits.",
+      },
+      {
+        src: "/strokevision-signup.png",
+        alt: "StrokeVision sign-up screen",
+        caption: "Sign-up — email + password or Continue with Apple.",
+      },
+      {
+        src: "/strokevision-signin.png",
+        alt: "StrokeVision sign-in screen",
+        caption: "Sign-in — welcome back.",
+      },
+      {
+        src: "/strokevision-sessions-empty.png",
+        alt: "StrokeVision empty sessions state",
+        caption: "First session — clear capture instructions, low friction to start.",
+      },
+      {
+        src: "/strokevision-stroke-index.png",
+        alt: "StrokeVision stroke analysis screen with skeleton overlay, per-stroke trend, and coaching notes",
+        caption: "Analysis — skeleton overlay, per-stroke trend, and AI coaching notes tied to the frame they came from.",
+      },
+    ],
+    problem:
+      "Coaching is the bottleneck for improving recreational players. Lessons are expensive and infrequent, while practice happens several times a week — so hours of reps reinforce whatever habits the player already has. Generic video apps don't close the gap: players film themselves, watch the clip once, and shelve it. There's no measurement, no consistent reference, no diagnosis, and no progression.",
+    solution:
+      "StrokeVision turns any practice video into a coaching session. The player records a swing, the system analyzes it across the full kinetic chain, and the app returns personalized, plain-language feedback grounded in a validated coaching knowledge base — paired with a visual reference against pro form and honest confidence on every measurement. The product is positioned as a real coach in your pocket: direct, observational, focused on the next thing to try.",
+    architecture: [
+      "Cross-platform mobile client (iOS first) with on-device capture and upload",
+      "Python analysis backend running an async processing pipeline for video",
+      "Computer-vision pose pipeline that extracts biomechanical signals across the kinetic chain",
+      "Coaching layer that selects the highest-impact feedback per session and grounds every cue in a validated knowledge base",
+      "Visual comparison layer (skeleton overlay against pro reference clips) rendered on the client",
+      "Multi-stroke data model from day one — V1 ships forehand; backhand, serve, volley, overhead are scoped on the roadmap",
+    ],
+    securityReliability: [
+      "Strict safety rules on coaching output — no medical, injury, or rehab guidance; technique-only",
+      "Knowledge-base grounding on every coaching tip with a 'pending expert review' state for unvalidated entries",
+      "Per-measurement confidence surfaced to the user when camera angle or pose quality is degraded — the coach declines to overclaim",
+      "Direct-to-storage uploads via short-lived presigned URLs so raw video bypasses the API path",
+      "In-app feedback loop on every tip (helpful / not helpful / flag) to close the validation cycle",
+    ],
+    designTradeoffs: [
+      "Narrow and deep over broad and shallow — V1 ships one stroke fully coached rather than five strokes poorly. Marketing, onboarding, and App Store copy are honest about V1 scope while the data model and pipeline assume multi-stroke from the start.",
+      "Honest measurement over confident-sounding output — the coach explicitly says when it can't see something clearly. Slightly less magical, dramatically more trustworthy.",
+      "Reference, not prescription — pro overlays are a comparison tool, never a 'copy this exactly' instruction. Avoids an entire class of bad coaching advice.",
+    ],
+    results: [
+      "V1 coaching pipeline operational end-to-end on the forehand groundstroke",
+      "Validated coaching knowledge base with expert-review gating before tips ship to users",
+      "App Store / TestFlight submission materials prepared; launch playbook in progress",
+      "Architecture and data model designed to extend across every major stroke without rework",
+    ],
+    artifacts: [],
   },
 ];
 

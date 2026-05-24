@@ -60,7 +60,7 @@ export function Education() {
                     Sep 2022 – Jun 2026
                   </span>
                   <div className="mt-1 flex gap-2">
-                    <Badge variant="accent">3.44 GPA</Badge>
+                    <Badge variant="accent">3.5 GPA</Badge>
                     <Badge variant="success">
                       <Award className="mr-1 h-3 w-3" />
                       Dean&apos;s List
