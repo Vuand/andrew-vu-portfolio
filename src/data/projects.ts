@@ -23,6 +23,7 @@ export interface Project {
   period: string;
   status: string;
   image?: string;
+  imageFit?: "cover" | "contain";
   confidential?: boolean;
   links?: { label: string; href: string }[];
   problem: string;
@@ -50,7 +51,8 @@ export const PROJECTS: Project[] = [
     tagline: "Your AI tennis coach in your pocket — record, analyze, and fix your technique",
     description:
       "An AI tennis coach that lets players record, analyze, and identify issues with their technique on every practice video. The app watches the swing across the full kinetic chain, picks the one or two things that matter most this session, and coaches the player through fixing them — with the why behind every cue and honest confidence on every measurement.",
-    image: "/strokevision-onboarding-1.png",
+    image: "/strokevision-logo.svg",
+    imageFit: "contain",
     tags: ["AI", "Full-Stack"],
     tech: [
       "React Native (Expo)",

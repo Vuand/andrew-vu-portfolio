@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import {
   ArrowLeft,
   ExternalLink,
@@ -19,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { FadeIn } from "@/components/ui/motion-wrapper";
 import { SponsorHubDiagram } from "@/components/projects/sponsorhub-diagram";
+import { ScreenshotLightbox } from "@/components/projects/screenshot-lightbox";
 
 // const artifactIcons = {
 //   diagram: FileText,
@@ -28,6 +30,8 @@ import { SponsorHubDiagram } from "@/components/projects/sponsorhub-diagram";
 // };
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   return (
     <>
       <ScrollProgress />
@@ -48,6 +52,19 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           {/* Header */}
           <FadeIn delay={0.05}>
             <header className="mb-12">
+              {project.image && project.imageFit === "contain" && (
+                <div className="mb-6 flex h-28 w-28 items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted/30 p-3 md:h-32 md:w-32">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} logo`}
+                    width={128}
+                    height={128}
+                    className="h-full w-full object-contain"
+                    priority
+                  />
+                </div>
+              )}
+
               <div className="mb-4 flex flex-wrap items-center gap-2">
                 {project.tags.map((tag) => (
                   <Badge key={tag} variant="accent">
@@ -229,20 +246,25 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             <FadeIn>
               <CaseSection title="Screenshots">
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-                  {project.screenshots.map((shot) => (
+                  {project.screenshots.map((shot, i) => (
                     <figure
                       key={shot.src}
                       className="overflow-hidden rounded-2xl border border-border bg-muted/30"
                     >
-                      <div className="relative aspect-[9/19.5] bg-muted">
+                      <button
+                        type="button"
+                        onClick={() => setLightboxIndex(i)}
+                        className="group relative block aspect-[9/19.5] w-full cursor-zoom-in overflow-hidden bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                        aria-label={`Enlarge screenshot: ${shot.alt}`}
+                      >
                         <Image
                           src={shot.src}
                           alt={shot.alt}
                           fill
                           sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw"
-                          className="object-cover"
+                          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                         />
-                      </div>
+                      </button>
                       {shot.caption && (
                         <figcaption className="px-3 py-2.5 text-xs leading-snug text-muted-foreground">
                           {shot.caption}
@@ -253,6 +275,15 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
                 </div>
               </CaseSection>
             </FadeIn>
+          )}
+
+          {project.screenshots && project.screenshots.length > 0 && (
+            <ScreenshotLightbox
+              screenshots={project.screenshots}
+              index={lightboxIndex}
+              onClose={() => setLightboxIndex(null)}
+              onIndexChange={setLightboxIndex}
+            />
           )}
 
           {/* Artifacts — commented out until proper media is added

@@ -72,7 +72,11 @@ export default function ProjectsPage() {
                         src={project.image}
                         alt={`${project.title} screenshot`}
                         fill
-                        className="object-cover object-top"
+                        className={
+                          project.imageFit === "contain"
+                            ? "object-contain p-6"
+                            : "object-cover object-top"
+                        }
                       />
                     ) : (
                       <span className="flex h-full items-center justify-center font-mono text-xs text-muted-foreground">
