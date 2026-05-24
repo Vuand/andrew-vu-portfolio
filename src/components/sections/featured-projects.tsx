@@ -15,8 +15,8 @@ const featured = PROJECTS.slice(0, 3);
 const proofTiles = [
   {
     icon: Activity,
-    title: "Record · Analyze · Identify",
-    detail: "Computer-vision pipeline lets players record any swing, analyze it across the kinetic chain, and identify the issues holding their technique back",
+    title: "Record · Analyze · Coach",
+    detail: "Players film any swing on their phone, the app studies their form from feet to fingertips, and tells them in plain English what to fix this session",
     project: "StrokeVision",
   },
   {
