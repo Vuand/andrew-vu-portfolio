@@ -54,7 +54,7 @@ export function ResumeContent() {
               title="Oregon State University"
               subtitle="BS Computer Science + Cybersecurity Certificate"
               location="Corvallis, Oregon"
-              period="Sep 2022 – Jun 2026 (expected)"
+              period="Sep 2022 – Jun 2026"
               badges={["GPA: 3.5", "Dean's List"]}
             >
               <p className="mt-2 text-sm text-muted-foreground">

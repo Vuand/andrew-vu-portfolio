@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Lock, Shield, Cpu, Globe } from "lucide-react";
+import { ArrowRight, Lock, Shield, Globe, Activity } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -14,10 +14,10 @@ const featured = PROJECTS.slice(0, 3);
 
 const proofTiles = [
   {
-    icon: Shield,
-    title: "Secure LLM Execution",
-    detail: "Allow-listed services + entity validation prevent unauthorized smart-home control",
-    project: "Home Assistant AI",
+    icon: Activity,
+    title: "Record · Analyze · Identify",
+    detail: "Computer-vision pipeline lets players record any swing, analyze it across the kinetic chain, and identify the issues holding their technique back",
+    project: "StrokeVision",
   },
   {
     icon: Lock,
@@ -26,16 +26,16 @@ const proofTiles = [
     project: "SponsorHub",
   },
   {
+    icon: Shield,
+    title: "Secure LLM Execution",
+    detail: "Allow-listed services + entity validation prevent unauthorized smart-home control",
+    project: "Home Assistant AI",
+  },
+  {
     icon: Globe,
     title: "Zero-Downtime Migration",
     detail: "DNS/domain/email continuity planned and executed with no service interruption",
     project: "GUMC",
-  },
-  {
-    icon: Cpu,
-    title: "API-Driven Digital Library",
-    detail: "Google Books API checkout system with PayPal/Stripe payment integration",
-    project: "WPI",
   },
 ];
 

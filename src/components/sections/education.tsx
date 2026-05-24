@@ -75,7 +75,7 @@ export function Education() {
                   Senior Capstone: AI-Powered Home Assistant Integration
                 </h4>
                 <p className="mt-1 text-base text-muted-foreground leading-relaxed">
-                  Building a secure pipeline that converts natural language
+                  Built a secure pipeline that converts natural language
                   commands into validated JSON actions for Home Assistant via
                   GPT-4o. Features allow-listed service execution, entity
                   validation, API key protection, and modular async architecture

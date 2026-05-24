@@ -49,19 +49,18 @@ export function RecruiterTLDR() {
             About Me
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-foreground/80 md:text-xl">
-            I&rsquo;m a Computer Science student at Oregon State University pursuing
-            a Bachelor of Science in Computer Science along with a Cybersecurity
-            Certificate, graduating in June 2026. I have a strong foundation in
-            programming, algorithms, data structures, cloud technologies, AI/ML,
-            and cybersecurity, supported by hands-on academic and personal
-            projects. I enjoy building full-stack applications with a
-            security-first mindset across systems, web, and cloud environments.
-            I&rsquo;m motivated, curious, and passionate about continuous learning,
-            problem-solving, and working in collaborative environments. Outside
-            of tech, I enjoy playing tennis, working out at the gym, and
-            exploring new experiences. I&rsquo;m currently seeking entry-level roles
-            in software or cybersecurity engineering where I can apply my skills
-            and gain real-world industry experience.
+            I&rsquo;m a Computer Science graduate from Oregon State University with
+            a Bachelor of Science in Computer Science and a Cybersecurity
+            Certificate. I have a strong foundation in programming, algorithms,
+            data structures, cloud technologies, AI/ML, and cybersecurity,
+            supported by hands-on academic and personal projects. I enjoy
+            building full-stack applications with a security-first mindset
+            across systems, web, and cloud environments. I&rsquo;m motivated, curious,
+            and passionate about continuous learning, problem-solving, and
+            working in collaborative environments. Outside of tech, I enjoy
+            playing tennis, working out at the gym, and exploring new
+            experiences. I&rsquo;m currently seeking software or cybersecurity
+            engineering roles where I can apply my skills and grow in industry.
           </p>
         </motion.div>
 
