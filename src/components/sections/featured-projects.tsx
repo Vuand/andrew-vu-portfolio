@@ -16,7 +16,7 @@ const proofTiles = [
   {
     icon: Activity,
     title: "Record · Analyze · Coach",
-    detail: "Players film any swing on their phone, the app studies their form from feet to fingertips, and tells them in plain English what to fix this session",
+    detail: "Players film any swing on their phone, the app studies their form from feet to fingertips, and tells them what to fix this session",
     project: "StrokeVision",
   },
   {

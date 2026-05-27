@@ -48,9 +48,9 @@ export const PROJECTS: Project[] = [
   {
     slug: "stroke-vision",
     title: "StrokeVision",
-    tagline: "Your AI tennis coach — record your swing, get plain-English feedback, fix your technique",
+    tagline: "Your AI tennis coach — record your swing, get clear feedback, fix your technique",
     description:
-      "An AI-powered tennis coach that lives in your phone. Players record themselves practicing, the app studies the swing from feet to fingertips, and it tells them — in plain English — the one or two things to focus on this session and how to fix them. Built for the millions of recreational players who practice far more often than they can afford a coach.",
+      "An AI-powered tennis coach that lives in your phone. Players record themselves practicing, the app studies the swing from feet to fingertips, and it tells them the one or two things to focus on this session and how to fix them. Built for the millions of recreational players who practice far more often than they can afford a coach.",
     image: "/strokevision-logo.svg",
     imageFit: "contain",
     tags: ["AI", "Full-Stack"],
@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
       "AWS S3",
       "Async Worker Pipeline",
     ],
-    role: "Founder & Lead Engineer — Mid-Stage Startup",
+    role: "Co-Founder & Lead Engineer — Early-Stage Startup",
     period: "Jan 2026 – Present",
     status: "V1 (forehand) approaching TestFlight; multi-stroke roadmap in progress",
     confidential: true,
