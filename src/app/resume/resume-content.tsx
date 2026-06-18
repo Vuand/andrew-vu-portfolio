@@ -1,6 +1,6 @@
 "use client";
 
-import { Code2, ExternalLink, MapPin, GraduationCap, Briefcase, Trophy, Heart, Shield } from "lucide-react";
+import { Download, ExternalLink, MapPin, GraduationCap, Briefcase, Trophy, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -22,14 +22,14 @@ export function ResumeContent() {
           <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
             <a href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf" download>
               <Button variant="accent">
-                <Code2 className="h-4 w-4" />
-                Software Engineering
+                <Download className="h-4 w-4" />
+                Software Engineering Resume
               </Button>
             </a>
             <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
               <Button variant="accent">
-                <Shield className="h-4 w-4" />
-                CyberSecurity
+                <Download className="h-4 w-4" />
+                CyberSecurity Resume
               </Button>
             </a>
             <a
