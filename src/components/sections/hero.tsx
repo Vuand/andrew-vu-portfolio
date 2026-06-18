@@ -69,7 +69,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:items-start"
+              className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap md:items-start"
             >
               <Button variant="primary" size="lg" onClick={scrollToProjects}>
                 View Projects
