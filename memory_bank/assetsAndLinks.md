@@ -17,7 +17,7 @@
 ## File Placeholders Needed in `/public`
 
 ### Documents
-- [ ] `/public/documents/andrew-vu-resume.pdf` — Resume PDF for download
+- [x] `/public/documents/AndrewVu_Resume_SoftwareEngineer.pdf` — Resume PDF for download
 
 ### Images
 - [ ] `/public/images/headshot.jpg` — Professional headshot (square, ~400x400)

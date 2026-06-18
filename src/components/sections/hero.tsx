@@ -75,7 +75,7 @@ export function Hero() {
                 View Projects
                 <ArrowDown className="h-5 w-5" />
               </Button>
-              <a href="/documents/AndrewVu-SWE-Resume.pdf" download>
+              <a href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf" download>
                 <Button variant="secondary" size="lg">
                   <Download className="h-5 w-5" />
                   Resume PDF
