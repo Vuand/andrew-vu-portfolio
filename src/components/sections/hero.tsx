@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Github, Linkedin } from "lucide-react";
+import { ArrowDown, Code2, Github, Linkedin, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlitchText } from "@/components/ui/glitch-text";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -77,14 +77,14 @@ export function Hero() {
               </Button>
               <a href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf" download>
                 <Button variant="secondary" size="lg">
-                  <Download className="h-5 w-5" />
-                  Resume &mdash; SWE
+                  <Code2 className="h-5 w-5" />
+                  Software Engineering
                 </Button>
               </a>
               <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
                 <Button variant="secondary" size="lg">
-                  <Download className="h-5 w-5" />
-                  Resume &mdash; Security
+                  <Shield className="h-5 w-5" />
+                  CyberSecurity
                 </Button>
               </a>
               <div className="flex gap-2">
