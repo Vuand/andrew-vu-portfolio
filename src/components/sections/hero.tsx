@@ -78,7 +78,13 @@ export function Hero() {
               <a href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf" download>
                 <Button variant="secondary" size="lg">
                   <Download className="h-5 w-5" />
-                  Resume PDF
+                  Resume &mdash; SWE
+                </Button>
+              </a>
+              <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
+                <Button variant="secondary" size="lg">
+                  <Download className="h-5 w-5" />
+                  Resume &mdash; Security
                 </Button>
               </a>
               <div className="flex gap-2">

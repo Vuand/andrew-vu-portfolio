@@ -23,7 +23,13 @@ export function ResumeContent() {
             <a href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf" download>
               <Button variant="accent">
                 <Download className="h-4 w-4" />
-                Download PDF
+                Software Engineering
+              </Button>
+            </a>
+            <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
+              <Button variant="accent">
+                <Download className="h-4 w-4" />
+                Cybersecurity
               </Button>
             </a>
             <a

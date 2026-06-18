@@ -17,7 +17,8 @@
 ## File Placeholders Needed in `/public`
 
 ### Documents
-- [x] `/public/documents/AndrewVu_Resume_SoftwareEngineer.pdf` — Resume PDF for download
+- [x] `/public/documents/AndrewVu_Resume_SoftwareEngineer.pdf` — SWE resume for download
+- [x] `/public/documents/AndrewVu_Resume_Cybersecurity.pdf` — Cybersecurity resume for download
 
 ### Images
 - [ ] `/public/images/headshot.jpg` — Professional headshot (square, ~400x400)
