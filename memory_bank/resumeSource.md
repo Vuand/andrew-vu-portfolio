@@ -21,7 +21,7 @@
 - **Degree**: BS Computer Science + Cybersecurity Certificate
 - **Dates**: 09/2022 – 06/2026 (expected)
 - **GPA**: 3.51 / 4.0
-- **Honors**: Dean's List (multiple terms) [TODO: confirm which terms]
+- **Honors**: Cum Laude; Dean's List (multiple terms) [TODO: confirm which terms]
 - **Location**: Corvallis, Oregon
 
 **Senior Capstone** (Fall 2025 – Spring 2026, in progress):

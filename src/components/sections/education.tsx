@@ -59,8 +59,12 @@ export function Education() {
                   <span className="font-mono text-sm text-muted-foreground">
                     Sep 2022 – Jun 2026
                   </span>
-                  <div className="mt-1 flex gap-2">
+                  <div className="mt-1 flex flex-wrap justify-end gap-2">
                     <Badge variant="accent">3.51 GPA</Badge>
+                    <Badge variant="success">
+                      <Award className="mr-1 h-3 w-3" />
+                      Cum Laude
+                    </Badge>
                     <Badge variant="success">
                       <Award className="mr-1 h-3 w-3" />
                       Dean&apos;s List

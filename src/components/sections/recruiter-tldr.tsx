@@ -14,7 +14,7 @@ const signals = [
   {
     icon: GraduationCap,
     label: "B.S. in Computer Science + Cybersecurity Certificate",
-    detail: "Oregon State University — B.S. in Computer Science + Cybersecurity Certificate, 3.51 GPA, Dean's List",
+    detail: "Oregon State University — B.S. in Computer Science + Cybersecurity Certificate, 3.51 GPA, Cum Laude, Dean's List",
   },
   {
     icon: Code2,
