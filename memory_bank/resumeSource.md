@@ -20,7 +20,7 @@
 ### Oregon State University
 - **Degree**: BS Computer Science + Cybersecurity Certificate
 - **Dates**: 09/2022 – 06/2026 (expected)
-- **GPA**: 3.44 / 4.0
+- **GPA**: 3.51 / 4.0
 - **Honors**: Dean's List (multiple terms) [TODO: confirm which terms]
 - **Location**: Corvallis, Oregon
 

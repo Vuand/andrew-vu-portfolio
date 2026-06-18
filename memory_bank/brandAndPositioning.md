@@ -45,7 +45,7 @@ Full-stack engineer who ships reliable software with security built in — from 
 - **Full-stack builder**: Next.js, TypeScript, Python, PostgreSQL — frontend through infra
 - **Security in the architecture**: Threat models, HMAC signing, allow-listed execution, append-only ledgers
 - **Shipped production systems**: Sole-developer websites, platform migration, AI automation pipeline
-- **CS + Cybersecurity**: Oregon State BS Computer Science + Cybersecurity Certificate (3.44 GPA, Dean's List)
+- **CS + Cybersecurity**: Oregon State BS Computer Science + Cybersecurity Certificate (3.51 GPA, Dean's List)
 
 ---
 

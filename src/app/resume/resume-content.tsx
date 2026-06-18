@@ -55,7 +55,7 @@ export function ResumeContent() {
               subtitle="BS Computer Science + Cybersecurity Certificate"
               location="Corvallis, Oregon"
               period="Sep 2022 – Jun 2026"
-              badges={["GPA: 3.5", "Dean's List"]}
+              badges={["GPA: 3.51", "Dean's List"]}
             >
               <p className="mt-2 text-sm text-muted-foreground">
                 <strong className="text-foreground">Senior Capstone:</strong>{" "}
