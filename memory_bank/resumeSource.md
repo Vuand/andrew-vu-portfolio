@@ -43,6 +43,12 @@ Data Structures & Algorithms, OOP, Advanced Web Dev, Cloud App Dev, Operating Sy
 
 ## Work Experience
 
+### Co-Founder & Lead Engineer
+**StrokeVision (Early-Stage Startup)** — Remote | 01/2026 – Present
+- Designed the app's security model: scoped each user's uploaded videos to that user in cloud storage (AWS S3), validated and constrained actions before execution, and flagged low-confidence inputs instead of guessing
+- Built the iOS app (React Native/Expo) on a Python/FastAPI backend with secure API handling and input validation across the client–server boundary; async pose-estimation pipeline runs in a background worker pool; TestFlight beta in progress
+- Tech: React Native (Expo), TypeScript, Python, FastAPI, PostgreSQL, AWS S3, Secure API Handling
+
 ### Software Engineer (Freelance, Part-time)
 **Gresham United Methodist Church** — Gresham, OR | 09/2025 – 12/2025
 - Built component-based web architecture in Framer with custom HTML/CSS/JS reusable UI components

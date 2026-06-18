@@ -96,6 +96,40 @@ export function ResumeContent() {
         <FadeIn>
           <ResumeSection title="Experience" icon={Briefcase}>
             <ResumeEntry
+              title="Co-Founder & Lead Engineer"
+              subtitle="StrokeVision (Early-Stage Startup)"
+              location="Remote"
+              period="Jan 2026 – Present"
+              badges={[
+                "React Native (Expo)",
+                "TypeScript",
+                "Python",
+                "FastAPI",
+                "PostgreSQL",
+                "AWS S3",
+                "Secure API Handling",
+              ]}
+            >
+              <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
+                <li className="flex gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  Designed the app&apos;s security model: scoped each user&apos;s
+                  uploaded videos to that user in cloud storage (AWS S3),
+                  validated and constrained actions before execution, and
+                  flagged low-confidence inputs instead of guessing.
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  Built the iOS app (React Native/Expo) on a Python/FastAPI
+                  backend with secure API handling and input validation across
+                  the client&ndash;server boundary; async pose-estimation
+                  pipeline runs in a background worker pool. TestFlight beta
+                  in progress.
+                </li>
+              </ul>
+            </ResumeEntry>
+
+            <ResumeEntry
               title="Software Engineer (Freelance)"
               subtitle="Gresham United Methodist Church"
               location="Gresham, OR"

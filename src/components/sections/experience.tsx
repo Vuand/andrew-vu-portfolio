@@ -16,6 +16,25 @@ interface Role {
 
 const roles: Role[] = [
   {
+    title: "Co-Founder & Lead Engineer",
+    company: "StrokeVision (Early-Stage Startup)",
+    location: "Remote",
+    period: "Jan 2026 – Present",
+    tech: [
+      "React Native (Expo)",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "AWS S3",
+      "Secure API Handling",
+    ],
+    bullets: [
+      "Designed the app's security model: scoped each user's uploaded videos to that user in cloud storage (AWS S3), validated and constrained actions before execution, and flagged low-confidence inputs instead of guessing.",
+      "Built the iOS app (React Native/Expo) on a Python/FastAPI backend with secure API handling and input validation across the client–server boundary; async pose-estimation pipeline runs in a background worker pool. TestFlight beta in progress.",
+    ],
+  },
+  {
     title: "Software Engineer (Freelance)",
     company: "Gresham United Methodist Church",
     location: "Gresham, OR",
