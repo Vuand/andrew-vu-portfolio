@@ -100,6 +100,7 @@ export function ResumeContent() {
               subtitle="StrokeVision (Early-Stage Startup)"
               location="Remote"
               period="Jan 2026 – Present"
+              link={{ label: "strokevision.app", href: "https://strokevision.app" }}
               badges={[
                 "React Native (Expo)",
                 "TypeScript",
@@ -290,6 +291,7 @@ function ResumeEntry({
   location,
   period,
   badges,
+  link,
   children,
 }: {
   title: string;
@@ -297,6 +299,7 @@ function ResumeEntry({
   location: string;
   period: string;
   badges?: string[];
+  link?: { label: string; href: string };
   children?: React.ReactNode;
 }) {
   return (
@@ -313,6 +316,17 @@ function ResumeEntry({
         <MapPin className="h-3 w-3" />
         {location}
       </p>
+      {link && (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent/80"
+        >
+          {link.label}
+          <ExternalLink className="h-3 w-3" />
+        </a>
+      )}
       {badges && (
         <div className="mt-2 flex flex-wrap gap-1.5">
           {badges.map((b) => (

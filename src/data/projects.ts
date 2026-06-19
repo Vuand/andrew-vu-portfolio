@@ -141,6 +141,7 @@ export const PROJECTS: Project[] = [
       "App Store launch materials prepared; TestFlight beta submission in progress",
       "Foundation is built to add every other major stroke without re-doing the work",
     ],
+    links: [{ label: "strokevision.app", href: "https://strokevision.app" }],
     artifacts: [],
   },
   {

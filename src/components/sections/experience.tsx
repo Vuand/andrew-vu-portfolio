@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin } from "lucide-react";
+import { MapPin, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/ui/motion-wrapper";
@@ -12,6 +12,7 @@ interface Role {
   period: string;
   tech: string[];
   bullets: string[];
+  link?: { label: string; href: string };
 }
 
 const roles: Role[] = [
@@ -20,6 +21,7 @@ const roles: Role[] = [
     company: "StrokeVision (Early-Stage Startup)",
     location: "Remote",
     period: "Jan 2026 – Present",
+    link: { label: "strokevision.app", href: "https://strokevision.app" },
     tech: [
       "React Native (Expo)",
       "TypeScript",
@@ -106,6 +108,18 @@ export function Experience() {
                   <MapPin className="h-3.5 w-3.5" />
                   {role.location}
                 </p>
+
+                {role.link && (
+                  <a
+                    href={role.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+                  >
+                    {role.link.label}
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                )}
 
                 {role.tech.length > 0 && (
                   <div className="mt-3 flex flex-wrap gap-1.5">
