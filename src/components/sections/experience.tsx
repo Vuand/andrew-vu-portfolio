@@ -114,10 +114,10 @@ export function Experience() {
                     href={role.link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+                    className="group mt-3 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground shadow-sm shadow-accent/30 transition-all duration-200 hover:shadow-md hover:shadow-accent/40 hover:brightness-110 active:scale-[0.98]"
                   >
-                    {role.link.label}
-                    <ExternalLink className="h-3.5 w-3.5" />
+                    Visit {role.link.label}
+                    <ExternalLink className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </a>
                 )}
 

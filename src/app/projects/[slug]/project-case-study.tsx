@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { FadeIn } from "@/components/ui/motion-wrapper";
 import { SponsorHubDiagram } from "@/components/projects/sponsorhub-diagram";
@@ -99,18 +98,17 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
               </div>
 
               {project.links && project.links.length > 0 && (
-                <div className="mt-4 flex gap-3">
+                <div className="mt-6 flex flex-wrap gap-3">
                   {project.links.map((link) => (
                     <a
                       key={link.href}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-md shadow-accent/30 transition-all duration-200 hover:shadow-lg hover:shadow-accent/40 hover:brightness-110 active:scale-[0.98]"
                     >
-                      <Button variant="secondary" size="sm">
-                        {link.label}
-                        <ExternalLink className="h-3.5 w-3.5" />
-                      </Button>
+                      Visit {link.label}
+                      <ExternalLink className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                     </a>
                   ))}
                 </div>

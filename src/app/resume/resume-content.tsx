@@ -321,10 +321,10 @@ function ResumeEntry({
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent/80"
+          className="group mt-2 inline-flex items-center gap-2 rounded-full bg-accent px-3.5 py-1.5 text-xs font-semibold text-accent-foreground shadow-sm shadow-accent/30 transition-all duration-200 hover:shadow-md hover:shadow-accent/40 hover:brightness-110 active:scale-[0.98]"
         >
-          {link.label}
-          <ExternalLink className="h-3 w-3" />
+          Visit {link.label}
+          <ExternalLink className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
         </a>
       )}
       {badges && (
