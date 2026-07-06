@@ -65,8 +65,8 @@ export const PROJECTS: Project[] = [
       "AWS S3",
       "Async Worker Pipeline",
     ],
-    role: "Co-Founder & Lead Engineer — Early-Stage Startup",
-    period: "Jan 2026 – Present",
+    role: "Founding Engineer — Early-Stage Startup",
+    period: "Jan 2026 – Jun 2026",
     status: "V1 (forehand) approaching TestFlight; multi-stroke roadmap in progress",
     confidential: true,
     screenshots: [

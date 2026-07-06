@@ -17,10 +17,10 @@ interface Role {
 
 const roles: Role[] = [
   {
-    title: "Co-Founder & Lead Engineer",
+    title: "Founding Engineer",
     company: "StrokeVision (Early-Stage Startup)",
     location: "Remote",
-    period: "Jan 2026 – Present",
+    period: "Jan 2026 – Jun 2026",
     link: { label: "strokevision.app", href: "https://strokevision.app" },
     tech: [
       "React Native (Expo)",
@@ -29,6 +29,7 @@ const roles: Role[] = [
       "FastAPI",
       "PostgreSQL",
       "AWS S3",
+      "Computer Vision",
       "Secure API Handling",
     ],
     bullets: [

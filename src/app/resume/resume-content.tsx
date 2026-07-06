@@ -96,10 +96,10 @@ export function ResumeContent() {
         <FadeIn>
           <ResumeSection title="Experience" icon={Briefcase}>
             <ResumeEntry
-              title="Co-Founder & Lead Engineer"
+              title="Founding Engineer"
               subtitle="StrokeVision (Early-Stage Startup)"
               location="Remote"
-              period="Jan 2026 – Present"
+              period="Jan 2026 – Jun 2026"
               link={{ label: "strokevision.app", href: "https://strokevision.app" }}
               badges={[
                 "React Native (Expo)",
@@ -108,6 +108,7 @@ export function ResumeContent() {
                 "FastAPI",
                 "PostgreSQL",
                 "AWS S3",
+                "Computer Vision",
                 "Secure API Handling",
               ]}
             >
