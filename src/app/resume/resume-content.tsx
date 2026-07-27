@@ -76,8 +76,8 @@ export function ResumeContent() {
                 <strong className="text-foreground">Key Coursework:</strong>{" "}
                 Data Structures & Algorithms, Advanced Web Dev, Cloud App Dev,
                 Network Security, Digital Forensics, Cryptography, Defense
-                Against the Dark Arts, Security Governance, AI, Parallel
-                Programming
+                Against the Dark Arts (Enterprise Defense), Security
+                Governance, AI, Parallel Programming
               </p>
             </ResumeEntry>
 

@@ -338,7 +338,9 @@ export const PROJECTS: Project[] = [
     role: "Lead Developer — Senior Capstone, Oregon State University",
     period: "Fall 2025 – Spring 2026",
     status: "Completed",
-    links: [{ label: "GitHub", href: "https://github.com/Vuand" }],
+    // No links: the capstone has no public repository, and the previous
+    // entry rendered a prominent "Visit GitHub" CTA that led to a profile
+    // page rather than the project it promised.
     problem:
       "Smart home systems require complex UIs or YAML automations. Non-technical users cannot easily control their homes with natural language, and unvalidated LLM output poses security risks when connected to physical systems.",
     solution:

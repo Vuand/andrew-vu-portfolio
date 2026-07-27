@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   description:
     "Software and security engineer. Digital forensics, secure systems design, and full-stack development. Oregon State University, 2026.",
   url: "https://andrewvu.tech",
-  email: "Andrewv11789@gmail.com",
+  email: "andrewv11789@gmail.com",
   phone: "503-954-7316",
   github: "https://github.com/Vuand",
   linkedin: "https://www.linkedin.com/in/andrewvu189/",

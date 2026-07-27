@@ -1,9 +1,13 @@
 /**
  * Content for /security.
  *
- * The tooling groups and their contents mirror the cybersecurity résumé
- * exactly, so a recruiter cross-referencing the page against the PDF sees the
- * same claims in the same shape. If the résumé changes, change this too.
+ * TODO(andrew): these groups were written to mirror the cybersecurity
+ * résumé, but the PDF currently at public/documents/ uses entirely different
+ * headings ("Core Security Competencies", "Languages", "Web & APIs", ...) and
+ * contains no mention of Security+, Autopsy, Wazuh, Sysmon or Active
+ * Directory. The page no longer claims the two match. When you replace the
+ * PDF, make the two agree and restore the cross-reference — a recruiter
+ * comparing them is the whole point of listing tooling twice.
  */
 
 export const SECURITY_POSITIONING = {
@@ -156,9 +160,9 @@ export const ADDITIONAL_SECURITY_WORK: AdditionalWork[] = [
   },
   {
     title: "AWS IAM access-control model",
-    context: "StrokeVision · Production iOS application",
+    context: "StrokeVision · iOS application, pre-release",
     detail:
-      "Implemented the access-control model for a production iOS application: scoped S3 bucket policies and IAM roles per service, isolated each user's uploaded video under least-privilege access, and kept long-lived credentials out of the mobile client.",
+      "Implemented the access-control model for an iOS application preparing for TestFlight release: scoped S3 bucket policies and IAM roles per service, isolated each user's uploaded video under least-privilege access, and kept long-lived credentials out of the mobile client.",
     href: "/projects/stroke-vision",
     hrefLabel: "StrokeVision case study",
   },

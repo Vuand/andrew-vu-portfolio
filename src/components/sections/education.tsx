@@ -13,7 +13,7 @@ const keyCoursework = [
   "Network Security",
   "Digital Forensics",
   "Cryptography",
-  "Defense Against the Dark Arts",
+  "Defense Against the Dark Arts (Enterprise Defense)",
   "Security Governance",
   "AI",
   "Data Mining & ML",

@@ -63,7 +63,7 @@ const roles: Role[] = [
     ],
   },
   {
-    title: "Nike Tennis Coach",
+    title: "Tennis Coach",
     company: "Nike Tennis — Pepperdine University",
     location: "Malibu, CA",
     period: "Jun 2024 – Sep 2024",

@@ -170,7 +170,7 @@ export function SecurityContent() {
         <FadeIn>
           <SectionTitle icon={Wrench}>Tooling</SectionTitle>
           <p className="mb-8 max-w-2xl text-muted-foreground">
-            Grouped as they appear on the cybersecurity résumé.
+            Grouped by function.
           </p>
         </FadeIn>
 
@@ -263,7 +263,7 @@ export function SecurityContent() {
             was actually built, as opposed to the coursework above. */}
         <FadeIn>
           <SectionTitle icon={AlertTriangle}>
-            Applied security in shipped systems
+            Applied security in systems I built
           </SectionTitle>
           <p className="mb-8 max-w-2xl text-muted-foreground">
             Attack surface and mitigations for systems I built, rather than
@@ -336,8 +336,7 @@ export function SecurityContent() {
               Cybersecurity resume
             </h2>
             <p className="mx-auto mt-2 max-w-lg text-muted-foreground">
-              The full record — tooling, coursework, and experience — in one
-              page.
+              Tooling, coursework, and experience in one page.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               {/* TODO(andrew): replace public/documents/AndrewVu_Resume_Cybersecurity.pdf
