@@ -18,13 +18,13 @@ const signals = [
   },
   {
     icon: Code2,
-    label: "Full-Stack Engineer",
-    detail: "Python · Java · JavaScript · TypeScript · React · SQL · REST APIs · HTML · CSS · Docker · CI/CD · Git · AWS · GCP",
+    label: "Software & Security Engineer",
+    detail: "Python · Java · JavaScript · TypeScript · React · SQL · REST APIs · Docker · CI/CD · Git · AWS · GCP",
   },
   {
     icon: Shield,
-    label: "Security-First",
-    detail: "Input validation, allow-listing, authZ patterns, HMAC signing, audit-ready systems",
+    label: "Forensics & Secure Systems",
+    detail: "Windows forensic examination, enterprise vulnerability assessment, RF device authentication — plus allow-listed execution, HMAC signing, and audit-ready ledgers in shipped code",
   },
   {
     icon: Trophy,
@@ -49,18 +49,17 @@ export function RecruiterTLDR() {
             About Me
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-foreground/80 md:text-xl">
-            I&rsquo;m a Computer Science graduate from Oregon State University with
-            a Bachelor of Science in Computer Science and a Cybersecurity
-            Certificate. I have a strong foundation in programming, algorithms,
-            data structures, cloud technologies, AI/ML, and cybersecurity,
-            supported by hands-on academic and personal projects. I enjoy
-            building full-stack applications with a security-first mindset
-            across systems, web, and cloud environments. I&rsquo;m motivated, curious,
-            and passionate about continuous learning, problem-solving, and
-            working in collaborative environments. Outside of tech, I enjoy
-            playing tennis, working out at the gym, and exploring new
-            experiences. I&rsquo;m currently seeking software or cybersecurity
-            engineering roles where I can apply my skills and grow in industry.
+            I build software with the security model designed in, and I examine
+            systems other people built. Bachelor of Science in Computer Science
+            and a Cybersecurity Certificate from Oregon State University. Recent
+            work spans a computer-vision iOS coaching app, escrow-and-attribution
+            payment infrastructure, a Windows disk-image forensic examination
+            reported as expert witness testimony, and a vulnerability assessment
+            across a Windows domain and a Linux server. I work in both directions
+            &mdash; building secure systems and investigating them &mdash; and
+            I&rsquo;m open to software and cybersecurity engineering roles.
+            Outside of tech: tennis, the gym, and anything I haven&rsquo;t tried
+            yet.
           </p>
         </motion.div>
 
