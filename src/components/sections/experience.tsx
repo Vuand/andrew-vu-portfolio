@@ -1,5 +1,3 @@
-"use client";
-
 import { MapPin, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";

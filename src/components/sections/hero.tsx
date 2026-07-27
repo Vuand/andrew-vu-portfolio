@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowDown, Download, Linkedin } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { GlitchText } from "@/components/ui/glitch-text";
@@ -28,27 +27,26 @@ export function Hero() {
         <div className="h-[300px] w-[300px] rounded-full bg-accent/5 blur-[60px] md:h-[500px] md:w-[500px] md:blur-[120px]" />
       </div>
 
+      {/*
+        The hero deliberately has no entrance animation. framer-motion
+        serialises `initial` into the prerendered HTML as opacity:0, which
+        meant the LCP element could not paint until the JS bundle downloaded
+        and hydrated — and if JS failed, the resume download CTAs never
+        appeared at all. Everything above the fold now paints with the
+        document. GlitchText still animates the second heading line.
+      */}
       <div className="relative mx-auto max-w-6xl px-6 py-28">
         {/* Two-column layout: text left, photo right */}
         <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-14">
           {/* Text column */}
           <div className="flex-1 text-center md:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
+            <div>
               <span className="mb-8 inline-block rounded-full border border-border bg-card px-5 py-2 font-mono text-sm text-muted-foreground">
                 Bachelor of Science in Computer Science + Cybersecurity Certificate @ Oregon State University &middot; 2026
               </span>
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.08 }}
-              className="max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-5xl md:text-[4.25rem]"
-            >
+            <h1 className="max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-5xl md:text-[4.25rem]">
               Software and security engineer.
               <br />
               <GlitchText
@@ -57,24 +55,16 @@ export function Hero() {
                 delay={800}
                 speed={35}
               />
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.15 }}
-              className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
             >
               I build reliable software from frontend to infrastructure &mdash;
               with security designed in, not bolted on. From validated LLM
               pipelines to fraud-resistant payment systems.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap md:items-start"
+            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap md:items-start"
             >
               <Button variant="primary" size="lg" onClick={scrollToProjects}>
                 View Projects
@@ -111,16 +101,11 @@ export function Hero() {
                   <Linkedin className="h-[22px] w-[22px]" />
                 </a>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Photo column */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex-shrink-0"
-          >
+          <div className="flex-shrink-0">
             <div className="relative">
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent/20 to-purple-500/20 blur-sm" />
               <Image
@@ -133,7 +118,7 @@ export function Hero() {
                 priority
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

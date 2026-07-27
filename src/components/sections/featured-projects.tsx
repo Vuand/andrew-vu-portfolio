@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Lock, Shield, Globe, Activity } from "lucide-react";
@@ -85,6 +83,7 @@ export function FeaturedProjects() {
                         src={project.image}
                         alt={`${project.title} screenshot`}
                         fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
                         className={
                           project.imageFit === "contain"
                             ? "object-contain p-5"

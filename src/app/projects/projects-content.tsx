@@ -88,6 +88,7 @@ export function ProjectsContent() {
                         src={project.image}
                         alt={`${project.title} screenshot`}
                         fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
                         className={
                           project.imageFit === "contain"
                             ? "object-contain p-6"
