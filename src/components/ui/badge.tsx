@@ -11,6 +11,10 @@ const badgeVariants = cva(
         outline: "border border-border text-muted-foreground",
         success: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
         warning: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
+        // Provenance marker for coursework — deliberately distinct from the
+        // accent used by skill tags so academic work is never read as
+        // professional or client engagement.
+        academic: "bg-violet-500/10 text-violet-700 dark:text-violet-300",
       },
     },
     defaultVariants: {

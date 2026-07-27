@@ -20,6 +20,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { FadeIn } from "@/components/ui/motion-wrapper";
 import { SponsorHubDiagram } from "@/components/projects/sponsorhub-diagram";
 import { ScreenshotLightbox } from "@/components/projects/screenshot-lightbox";
+import { getTagVariant } from "@/lib/tag-variants";
 
 // const artifactIcons = {
 //   diagram: FileText,
@@ -66,7 +67,7 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
 
               <div className="mb-4 flex flex-wrap items-center gap-2">
                 {project.tags.map((tag) => (
-                  <Badge key={tag} variant="accent">
+                  <Badge key={tag} variant={getTagVariant(tag)}>
                     {tag}
                   </Badge>
                 ))}
@@ -146,55 +147,64 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           </FadeIn>
 
           {/* Problem */}
-          <FadeIn>
-            <CaseSection title="Problem">
-              <p className="leading-relaxed text-muted-foreground">
-                {project.problem}
-              </p>
-            </CaseSection>
-          </FadeIn>
+          {project.problem && (
+            <FadeIn>
+              <CaseSection title="Problem">
+                <p className="leading-relaxed text-muted-foreground">
+                  {project.problem}
+                </p>
+              </CaseSection>
+            </FadeIn>
+          )}
 
           {/* Solution */}
-          <FadeIn>
-            <CaseSection title="Solution">
-              <p className="leading-relaxed text-muted-foreground">
-                {project.solution}
-              </p>
-            </CaseSection>
-          </FadeIn>
+          {project.solution && (
+            <FadeIn>
+              <CaseSection title="Solution">
+                <p className="leading-relaxed text-muted-foreground">
+                  {project.solution}
+                </p>
+              </CaseSection>
+            </FadeIn>
+          )}
 
           {/* Architecture */}
-          <FadeIn>
-            <CaseSection title="Architecture">
-              {project.slug === "sponsorhub" && (
-                <div className="mb-6 overflow-hidden rounded-xl border border-border bg-muted/30 p-6">
-                  <SponsorHubDiagram />
-                </div>
-              )}
-              <ul className="space-y-3">
-                {project.architecture.map((point, i) => (
-                  <li key={i} className="flex gap-3 text-muted-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    <span className="leading-relaxed">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </CaseSection>
-          </FadeIn>
+          {project.architecture && project.architecture.length > 0 && (
+            <FadeIn>
+              <CaseSection title="Architecture">
+                {project.slug === "sponsorhub" && (
+                  <div className="mb-6 overflow-hidden rounded-xl border border-border bg-muted/30 p-6">
+                    <SponsorHubDiagram />
+                  </div>
+                )}
+                <ul className="space-y-3">
+                  {project.architecture.map((point, i) => (
+                    <li key={i} className="flex gap-3 text-muted-foreground">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <span className="leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CaseSection>
+            </FadeIn>
+          )}
 
           {/* Security & Reliability */}
-          <FadeIn>
-            <CaseSection title="Security & Reliability" icon={Shield}>
-              <ul className="space-y-3">
-                {project.securityReliability.map((point, i) => (
-                  <li key={i} className="flex gap-3 text-muted-foreground">
-                    <Shield className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <span className="leading-relaxed">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </CaseSection>
-          </FadeIn>
+          {project.securityReliability &&
+            project.securityReliability.length > 0 && (
+              <FadeIn>
+                <CaseSection title="Security & Reliability" icon={Shield}>
+                  <ul className="space-y-3">
+                    {project.securityReliability.map((point, i) => (
+                      <li key={i} className="flex gap-3 text-muted-foreground">
+                        <Shield className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                        <span className="leading-relaxed">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CaseSection>
+              </FadeIn>
+            )}
 
           {/* Design Tradeoffs */}
           {project.designTradeoffs && project.designTradeoffs.length > 0 && (
@@ -213,18 +223,20 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
           )}
 
           {/* Results */}
-          <FadeIn>
-            <CaseSection title="Results">
-              <ul className="space-y-3">
-                {project.results.map((point, i) => (
-                  <li key={i} className="flex gap-3 text-muted-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
-                    <span className="leading-relaxed">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </CaseSection>
-          </FadeIn>
+          {project.results && project.results.length > 0 && (
+            <FadeIn>
+              <CaseSection title="Results">
+                <ul className="space-y-3">
+                  {project.results.map((point, i) => (
+                    <li key={i} className="flex gap-3 text-muted-foreground">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                      <span className="leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CaseSection>
+            </FadeIn>
+          )}
 
           {/* Tech Stack */}
           <FadeIn>

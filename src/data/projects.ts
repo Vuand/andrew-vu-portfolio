@@ -1,4 +1,32 @@
-export type ProjectTag = "Full-Stack" | "Security" | "AI" | "Web" | "Infra";
+export type ProjectTag =
+  | "Full-Stack"
+  | "Security"
+  | "AI"
+  | "Web"
+  | "Infra"
+  | "Forensics"
+  | "Detection"
+  | "Assessment"
+  | "Machine Learning"
+  | "Academic";
+
+/** Which index an entry belongs to. Drives /projects vs /security. */
+export type ProjectCategory = "software" | "security";
+
+/**
+ * Drives the case-study template and the label shown on cards.
+ *
+ * Software work answers "does it work and is it well built?" — that is the
+ * `project` template. Security casework answers "is the reasoning sound and
+ * did they know when to stop?" — that is the examination/assessment template.
+ */
+export type ContentType = "project" | "examination" | "assessment";
+
+export const CONTENT_TYPE_LABEL: Record<ContentType, string> = {
+  project: "Case Study",
+  examination: "Forensic Examination",
+  assessment: "Security Assessment",
+};
 
 export interface ProjectArtifact {
   label: string;
@@ -10,6 +38,38 @@ export interface ProjectScreenshot {
   alt: string;
   caption?: string;
   orientation?: "portrait" | "landscape";
+}
+
+/** A tool used during an examination, with its version where known. */
+export interface ToolingItem {
+  name: string;
+  purpose?: string;
+}
+
+/** One step of the examination, in the order it was performed. */
+export interface MethodStep {
+  title: string;
+  detail: string;
+}
+
+/** Findings, optionally grouped (e.g. "Windows / Active Directory" vs "Linux"). */
+export interface FindingGroup {
+  group?: string;
+  /** Rendered first and given visual weight — use for the finding to lead with. */
+  lead?: string;
+  items: string[];
+}
+
+/**
+ * A bound on what the evidence supports.
+ *
+ * `claim` states what could NOT be concluded. `wouldConfirm` names the
+ * artifact or test that would settle it. Both are drawn verbatim from the
+ * source material — never inferred.
+ */
+export interface LimitEntry {
+  claim: string;
+  wouldConfirm?: string;
 }
 
 export interface Project {
@@ -26,27 +86,67 @@ export interface Project {
   imageFit?: "cover" | "contain";
   confidential?: boolean;
   links?: { label: string; href: string }[];
-  problem: string;
-  solution: string;
-  architecture: string[];
-  securityReliability: string[];
-  designTradeoffs?: string[];
-  results: string[];
-  artifacts: ProjectArtifact[];
   screenshots?: ProjectScreenshot[];
+
+  // --- Classification -------------------------------------------------
+  category?: ProjectCategory;
+  contentType?: ContentType;
+  /** Provenance line, e.g. "CS 473 Digital Forensics · Oregon State University · Spring 2026". */
+  context?: string;
+  /** For team work: what Andrew personally did. Rendered prominently near the top. */
+  attribution?: string;
+  /** Ordering on /security, independent of the /projects order. */
+  featuredOnSecurity?: boolean;
+  securityOrder?: number;
+
+  // --- Software case-study sections -----------------------------------
+  // Optional so security entries are not forced to invent software-shaped
+  // content. Required in practice for every category: "software" entry.
+  problem?: string;
+  solution?: string;
+  architecture?: string[];
+  securityReliability?: string[];
+  designTradeoffs?: string[];
+  results?: string[];
+  artifacts?: ProjectArtifact[];
+
+  // --- Security case-study sections -----------------------------------
+  // Rendered in this exact order. `limits` is not optional in practice: a
+  // security write-up that never says what it could not conclude is the
+  // failure mode this template exists to prevent.
+  scope?: string;
+  /** Caveats on scope — e.g. which parts of the work were not Andrew's. */
+  scopeNotes?: string[];
+  environment?: string;
+  tooling?: ToolingItem[];
+  methodIntro?: string;
+  method?: MethodStep[];
+  findings?: FindingGroup[];
+  limitsIntro?: string;
+  limits?: LimitEntry[];
+  takeaway?: string;
+  /** Formal citation, for work that builds on published research. */
+  reference?: string;
 }
 
 export const ALL_TAGS: ProjectTag[] = [
   "Full-Stack",
   "Security",
+  "Forensics",
+  "Detection",
+  "Assessment",
   "AI",
+  "Machine Learning",
   "Web",
   "Infra",
+  "Academic",
 ];
 
 export const PROJECTS: Project[] = [
   {
     slug: "stroke-vision",
+    category: "software",
+    contentType: "project",
     title: "StrokeVision",
     tagline: "Your AI tennis coach — record your swing, get clear feedback, fix your technique",
     description:
@@ -146,6 +246,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "sponsorhub",
+    category: "software",
+    contentType: "project",
     title: "SponsorHub",
     tagline: "Performance-based creator marketing infrastructure with built-in financial accountability",
     description:
@@ -207,6 +309,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "home-assistant-ai",
+    category: "software",
+    contentType: "project",
     title: "AI-Powered Home Assistant",
     tagline: "Natural language to secure smart-home automation",
     description:
@@ -258,6 +362,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "wpi-website",
+    category: "software",
+    contentType: "project",
     title: "Wholistic Peace Institute",
     tagline: "Full-stack org website with digital library checkout",
     description:
@@ -302,6 +408,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "gumc-migration",
+    category: "software",
+    contentType: "project",
     title: "GUMC Platform Migration",
     tagline: "Zero-downtime Wix-to-Framer migration",
     description:
@@ -351,4 +459,38 @@ export function getProjectBySlug(slug: string): Project | undefined {
 
 export function getProjectsByTag(tag: ProjectTag): Project[] {
   return PROJECTS.filter((p) => p.tags.includes(tag));
+}
+
+/**
+ * Security casework is rendered by a different template than software work,
+ * and this is the single place that decision is made. Entries without an
+ * explicit category are treated as software, which is what the five
+ * pre-existing entries were before the category field existed.
+ */
+export function isSecurityCaseStudy(project: Project): boolean {
+  return project.category === "security";
+}
+
+/** Academic work must always be labelled as such — see the Academic tag. */
+export function isAcademic(project: Project): boolean {
+  return project.tags.includes("Academic");
+}
+
+/**
+ * Entries for /security, ordered by securityOrder rather than by the
+ * /projects ordering, so the two indexes can lead with different work.
+ */
+export function getSecurityCaseStudies(): Project[] {
+  return PROJECTS.filter(
+    (p) => isSecurityCaseStudy(p) && p.featuredOnSecurity !== false
+  ).sort(
+    (a, b) =>
+      (a.securityOrder ?? Number.MAX_SAFE_INTEGER) -
+      (b.securityOrder ?? Number.MAX_SAFE_INTEGER)
+  );
+}
+
+/** The label a card shows for this entry ("Case Study", "Forensic Examination", …). */
+export function getContentTypeLabel(project: Project): string {
+  return CONTENT_TYPE_LABEL[project.contentType ?? "project"];
 }

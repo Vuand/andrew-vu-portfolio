@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Stagger, StaggerItem } from "@/components/ui/motion-wrapper";
+import { getTagVariant } from "@/lib/tag-variants";
 
 const featured = PROJECTS.slice(0, 3);
 
@@ -106,7 +107,7 @@ export function FeaturedProjects() {
                   <div className="flex-1">
                     <div className="mb-2 flex flex-wrap gap-1.5">
                       {project.tags.map((tag) => (
-                        <Badge key={tag} variant="accent">
+                        <Badge key={tag} variant={getTagVariant(tag)}>
                           {tag}
                         </Badge>
                       ))}
