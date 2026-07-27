@@ -13,10 +13,16 @@ export const SITE_CONFIG = {
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/security", label: "Security" },
   { href: "/resume", label: "Resume" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
+/**
+ * Home page scroll-spy targets. "Security" is a route, not a section, so it
+ * is appended as a link — otherwise it would be unreachable from the nav
+ * while the visitor is on the home page.
+ */
 export const HOME_SECTIONS = [
   { id: "hero", label: "Home" },
   { id: "projects", label: "Projects" },
@@ -24,6 +30,11 @@ export const HOME_SECTIONS = [
   { id: "education", label: "Education" },
   { id: "skills", label: "Skills" },
   { id: "contact", label: "Contact" },
+] as const;
+
+/** Routes surfaced in the home-page nav alongside the scroll-spy sections. */
+export const HOME_NAV_ROUTES = [
+  { href: "/security", label: "Security" },
 ] as const;
 
 export const SOFTWARE_SKILLS = [

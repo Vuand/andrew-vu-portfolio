@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Github, Linkedin } from "lucide-react";
+import { ArrowDown, Download, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlitchText } from "@/components/ui/glitch-text";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -87,16 +87,11 @@ export function Hero() {
                   Cybersecurity Resume
                 </Button>
               </a>
+              {/* GitHub is deliberately not a top-of-page CTA: the public
+                  repos contain no security work — coursework is restricted
+                  and StrokeVision is a startup — so it undersells the case
+                  this page is making. It remains in the footer. */}
               <div className="flex gap-2">
-                <a
-                  href={SITE_CONFIG.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="ghost" size="icon" aria-label="GitHub">
-                    <Github className="h-[22px] w-[22px]" />
-                  </Button>
-                </a>
                 <a
                   href={SITE_CONFIG.linkedin}
                   target="_blank"

@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS, HOME_SECTIONS } from "@/lib/constants";
+import { NAV_LINKS, HOME_SECTIONS, HOME_NAV_ROUTES } from "@/lib/constants";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -76,20 +76,31 @@ export function Navbar() {
         {/* Desktop nav */}
         <div className="hidden items-center gap-1 md:flex">
           {isHome
-            ? HOME_SECTIONS.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => scrollTo(section.id)}
-                  className={cn(
-                    "rounded-lg px-3 py-2 text-base font-medium transition-colors cursor-pointer",
-                    activeSection === section.id
-                      ? "text-accent"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {section.label}
-                </button>
-              ))
+            ? [
+                ...HOME_SECTIONS.map((section) => (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollTo(section.id)}
+                    className={cn(
+                      "rounded-lg px-3 py-2 text-base font-medium transition-colors cursor-pointer",
+                      activeSection === section.id
+                        ? "text-accent"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {section.label}
+                  </button>
+                )),
+                ...HOME_NAV_ROUTES.map((route) => (
+                  <Link
+                    key={route.href}
+                    href={route.href}
+                    className="rounded-lg px-3 py-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {route.label}
+                  </Link>
+                )),
+              ]
             : NAV_LINKS.map((link) => {
                 const isActive =
                   link.href === "/"
@@ -145,20 +156,31 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-1 px-6 py-4">
               {isHome
-                ? HOME_SECTIONS.map((section) => (
-                    <button
-                      key={section.id}
-                      onClick={() => scrollTo(section.id)}
-                      className={cn(
-                        "rounded-lg px-3 py-3 text-left text-base font-medium transition-colors cursor-pointer",
-                        activeSection === section.id
-                          ? "bg-accent/10 text-accent"
-                          : "text-muted-foreground hover:text-foreground"
-                      )}
-                    >
-                      {section.label}
-                    </button>
-                  ))
+                ? [
+                    ...HOME_SECTIONS.map((section) => (
+                      <button
+                        key={section.id}
+                        onClick={() => scrollTo(section.id)}
+                        className={cn(
+                          "rounded-lg px-3 py-3 text-left text-base font-medium transition-colors cursor-pointer",
+                          activeSection === section.id
+                            ? "bg-accent/10 text-accent"
+                            : "text-muted-foreground hover:text-foreground"
+                        )}
+                      >
+                        {section.label}
+                      </button>
+                    )),
+                    ...HOME_NAV_ROUTES.map((route) => (
+                      <Link
+                        key={route.href}
+                        href={route.href}
+                        className="rounded-lg px-3 py-3 text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {route.label}
+                      </Link>
+                    )),
+                  ]
                 : NAV_LINKS.map((link) => {
                     const isActive =
                       link.href === "/"
