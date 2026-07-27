@@ -1,18 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Lock, Shield, Globe, Activity } from "lucide-react";
-import { PROJECTS } from "@/data/projects";
+import { PROJECTS, getContentTypeLabel } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Stagger, StaggerItem } from "@/components/ui/motion-wrapper";
 import { getTagVariant } from "@/lib/tag-variants";
+import { ProjectCardVisual } from "@/components/projects/project-card-visual";
 
 // Explicit slugs rather than PROJECTS.slice(0, 3): the slice silently
 // depended on the software entries staying first in the array, which stopped
 // being obvious once security casework was appended.
-const FEATURED_SLUGS = ["stroke-vision", "sponsorhub", "home-assistant-ai"];
+//
+// The forensic examination is here because the home page previously showed
+// only software while its own meta description promised digital forensics —
+// a security recruiter arriving from the resume had to reach /security before
+// seeing any security work at all. It sits last so the software ordering is
+// unchanged for anyone reading left to right.
+const FEATURED_SLUGS = [
+  "stroke-vision",
+  "sponsorhub",
+  "home-assistant-ai",
+  "insider-threat-forensic-examination",
+];
 const featured = FEATURED_SLUGS.map((slug) =>
   PROJECTS.find((p) => p.slug === slug)
 ).filter((p): p is (typeof PROJECTS)[number] => Boolean(p));
@@ -50,8 +62,8 @@ export function FeaturedProjects() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           label="Projects"
-          title="Selected Projects"
-          description="End-to-end systems — designed, built, shipped."
+          title="Selected Work"
+          description="Systems I designed and shipped, and systems I examined."
         />
 
         {/* Proof tiles */}
@@ -75,7 +87,7 @@ export function FeaturedProjects() {
         </Stagger>
 
         {/* Project cards */}
-        <Stagger className="grid gap-6 md:grid-cols-3">
+        <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((project) => (
             <StaggerItem key={project.slug}>
               <Link
@@ -84,12 +96,17 @@ export function FeaturedProjects() {
               >
                 <Card className="flex h-full flex-col justify-between">
                   <div className="relative mb-4 h-40 overflow-hidden rounded-lg bg-muted/50">
-                    {project.image ? (
+                    {project.cardVisual ? (
+                      <ProjectCardVisual
+                        visual={project.cardVisual}
+                        label={`${project.title} — diagram`}
+                      />
+                    ) : project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.title} screenshot`}
                         fill
-                        sizes="(min-width: 768px) 33vw, 100vw"
+                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                         className={
                           project.imageFit === "contain"
                             ? "object-contain p-5"
@@ -120,16 +137,22 @@ export function FeaturedProjects() {
                         <Badge variant="warning">Confidential</Badge>
                       )}
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground">
+                    <h3 className="text-lg font-semibold leading-snug text-foreground">
                       {project.title}
                     </h3>
-                    <p className="mt-1 text-base text-muted-foreground">
+                    {project.context && (
+                      <p className="mt-1.5 font-mono text-xs leading-snug text-muted-foreground">
+                        {project.context}
+                      </p>
+                    )}
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                       {project.tagline}
                     </p>
                   </div>
 
-                  <div className="mt-4 flex items-center gap-1 text-base font-medium text-accent">
-                    Read case study <ArrowRight className="h-3.5 w-3.5" />
+                  <div className="mt-4 flex items-center gap-1 text-sm font-medium text-accent">
+                    Read {getContentTypeLabel(project).toLowerCase()}
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </div>
                 </Card>
               </Link>
