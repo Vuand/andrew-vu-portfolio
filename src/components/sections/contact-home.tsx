@@ -39,8 +39,12 @@ export function ContactHome() {
                 <h3 className="text-2xl font-bold text-foreground md:text-3xl">
                   Andrew Vu
                 </h3>
-                <p className="mt-0.5 text-base text-muted-foreground sm:whitespace-nowrap sm:text-lg">
-                  Software &amp; Security Engineer &middot; Oregon State University, 2026
+                {/* No whitespace-nowrap: with a longer role line and a longer
+                    email CTA this ran underneath the buttons instead of
+                    wrapping. The degree and year are already stated in the
+                    hero badge and the education section. */}
+                <p className="mt-0.5 text-base text-muted-foreground sm:text-lg">
+                  Software &amp; Security Engineer
                 </p>
                 <p className="mt-1 flex items-center justify-center gap-1 text-base text-muted-foreground md:justify-start">
                   <MapPin className="h-4 w-4 flex-shrink-0" />
@@ -58,8 +62,8 @@ export function ContactHome() {
                     className: "w-full sm:w-auto",
                   })}
                 >
-                  <Mail className="h-4 w-4" />
-                  Email {SITE_CONFIG.email}
+                  <Mail className="h-4 w-4 shrink-0" />
+                  <span className="truncate">Email {SITE_CONFIG.email}</span>
                 </a>
                 <CopyButton
                   text={SITE_CONFIG.email}

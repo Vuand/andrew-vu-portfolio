@@ -87,7 +87,7 @@ export function FeaturedProjects() {
         </Stagger>
 
         {/* Project cards */}
-        <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger className="grid gap-6 sm:grid-cols-2">
           {featured.map((project) => (
             <StaggerItem key={project.slug}>
               <Link
@@ -106,7 +106,7 @@ export function FeaturedProjects() {
                         src={project.image}
                         alt={`${project.title} screenshot`}
                         fill
-                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                        sizes="(min-width: 640px) 50vw, 100vw"
                         className={
                           project.imageFit === "contain"
                             ? "object-contain p-5"
@@ -129,15 +129,17 @@ export function FeaturedProjects() {
                   <div className="flex-1">
                     <div className="mb-2 flex flex-wrap gap-1.5">
                       {project.tags.map((tag) => (
-                        <Badge key={tag} variant={getTagVariant(tag)}>
+                        <Badge key={tag} size="sm" variant={getTagVariant(tag)}>
                           {tag}
                         </Badge>
                       ))}
                       {project.confidential && (
-                        <Badge variant="warning">Confidential</Badge>
+                        <Badge size="sm" variant="warning">
+                          Confidential
+                        </Badge>
                       )}
                     </div>
-                    <h3 className="text-lg font-semibold leading-snug text-foreground">
+                    <h3 className="text-xl font-semibold leading-snug text-foreground">
                       {project.title}
                     </h3>
                     {project.context && (
@@ -145,7 +147,7 @@ export function FeaturedProjects() {
                         {project.context}
                       </p>
                     )}
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-base leading-relaxed text-muted-foreground">
                       {project.tagline}
                     </p>
                   </div>

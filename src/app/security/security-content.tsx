@@ -132,13 +132,13 @@ export function SecurityContent() {
 
                   <div className="flex-1">
                     <div className="mb-2 flex flex-wrap gap-1.5">
-                      <Badge variant="outline">
+                      <Badge size="sm" variant="outline">
                         {getContentTypeLabel(project)}
                       </Badge>
                       {project.tags
                         .filter((t) => t === "Academic")
                         .map((tag) => (
-                          <Badge key={tag} variant={getTagVariant(tag)}>
+                          <Badge key={tag} size="sm" variant={getTagVariant(tag)}>
                             {tag}
                           </Badge>
                         ))}

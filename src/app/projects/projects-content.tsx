@@ -116,12 +116,14 @@ export function ProjectsContent() {
                   <div className="flex-1">
                     <div className="mb-2 flex flex-wrap gap-1.5">
                       {project.tags.map((tag) => (
-                        <Badge key={tag} variant={getTagVariant(tag)}>
+                        <Badge key={tag} size="sm" variant={getTagVariant(tag)}>
                           {tag}
                         </Badge>
                       ))}
                       {project.confidential && (
-                        <Badge variant="warning">Confidential</Badge>
+                        <Badge size="sm" variant="warning">
+                          Confidential
+                        </Badge>
                       )}
                     </div>
                     <h2 className="text-xl font-semibold text-foreground">

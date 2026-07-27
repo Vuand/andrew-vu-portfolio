@@ -34,12 +34,13 @@ export const HOME_SECTIONS = [
 
 /**
   * Routes surfaced in the home-page nav alongside the scroll-spy sections.
-  * Without these, /security and /resume are unreachable from the nav while a
-  * visitor is on the home page — the home nav renders sections, not routes.
+  * Kept to one entry: the home nav already renders six scroll-spy sections,
+  * and adding more routes pushed it to eight items that crowded the bar.
+  * /resume is reachable from the two labelled hero download CTAs and the
+  * footer, so Security — the newer, less discoverable surface — takes the slot.
   */
 export const HOME_NAV_ROUTES = [
   { href: "/security", label: "Security" },
-  { href: "/resume", label: "Resume" },
 ] as const;
 
 export const SOFTWARE_SKILLS = [
