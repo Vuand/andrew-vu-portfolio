@@ -5,8 +5,10 @@ import { SECURITY_POSITIONING } from "@/data/security";
 
 export const metadata: Metadata = {
   title: "Security — Digital Forensics & Incident Response",
+  // Kept under ~160 characters so the credential clause is not truncated in
+  // search results.
   description:
-    "Andrew Vu — digital forensics and incident response, security analysis. Windows forensic examination, enterprise vulnerability assessment, and RF device authentication. Oregon State University, Cybersecurity Certificate, 2026.",
+    "Digital forensics and incident response casework by Andrew Vu: a Windows forensic examination, an enterprise vulnerability assessment, and RF device authentication.",
   openGraph: {
     title: "Andrew Vu — Digital Forensics & Incident Response",
     description:
@@ -27,7 +29,9 @@ export default function SecurityPage() {
             "@type": "Person",
             "@id": `${SITE_CONFIG.url}#person`,
             name: "Andrew Vu",
-            url: `${SITE_CONFIG.url}/security`,
+            // No `url` here: this node shares an @id with the site-wide Person
+            // in the root layout, and two different `url` values on one @id is
+            // a conflict rather than a specialisation.
             jobTitle: SECURITY_POSITIONING.headline,
             alumniOf: {
               "@type": "CollegeOrUniversity",

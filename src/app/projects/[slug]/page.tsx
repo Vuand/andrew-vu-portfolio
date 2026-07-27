@@ -34,14 +34,32 @@ export async function generateMetadata({
     ? project.title
     : `${project.title} — ${label}`;
 
+  // Several taglines are short enough to be useless as a search snippet, so
+  // fall back to the (longer) description and trim to a sensible length rather
+  // than shipping a 40-character meta description.
+  const description =
+    project.tagline.length >= 110
+      ? project.tagline
+      : truncate(
+          `${project.tagline}. ${project.description}`.replace(/\.\.\s/, ". "),
+          158
+        );
+
   return {
     title,
-    description: project.tagline,
+    description,
     openGraph: {
       title: `${project.title} — Andrew Vu`,
-      description: project.tagline,
+      description,
     },
   };
+}
+
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return `${cut.slice(0, lastSpace > 0 ? lastSpace : max).replace(/[,;:.]$/, "")}…`;
 }
 
 export default async function ProjectPage({ params }: PageProps) {
