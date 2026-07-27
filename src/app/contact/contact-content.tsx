@@ -38,7 +38,7 @@ export function ContactContent() {
         <SectionHeading
           label="// contact"
           title="Let's Connect"
-          description="Looking for a full-stack engineer who builds secure, reliable systems? I'd like to hear about what you're working on."
+          description="Looking for an engineer who builds secure systems — or investigates them? I'd like to hear about what you're working on."
         />
 
         <Stagger className="grid gap-4 md:grid-cols-3">

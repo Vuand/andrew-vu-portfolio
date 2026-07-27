@@ -20,9 +20,9 @@ export function CTASection() {
                 Let&apos;s build something together.
               </h2>
               <p className="mx-auto mt-4 max-w-lg text-muted-foreground md:text-lg">
-                Looking for a full-stack engineer who cares about security and
-                reliability? I&apos;d like to hear about what you&apos;re
-                building.
+                Looking for an engineer who builds secure systems &mdash; or
+                investigates them? I&apos;d like to hear about what
+                you&apos;re building.
               </p>
 
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

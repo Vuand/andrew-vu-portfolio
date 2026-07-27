@@ -16,7 +16,7 @@ export function Footer() {
               andrew<span className="text-accent">vu</span>
             </Link>
             <p className="mt-2 text-base text-muted-foreground">
-              Full-stack engineer. Security-first mindset.
+              Software and security engineer.
             </p>
           </div>
 

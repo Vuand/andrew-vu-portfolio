@@ -14,7 +14,7 @@ export function ResumeContent() {
         <SectionHeading
           label="// resume"
           title="Andrew Vu"
-          description="Full-Stack Software Engineer &middot; Security-Minded Builder"
+          description="Software &amp; Security Engineer &middot; Digital Forensics &middot; Secure Systems"
         />
 
         {/* Download + links */}
@@ -29,7 +29,7 @@ export function ResumeContent() {
             <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
               <Button variant="accent">
                 <Download className="h-4 w-4" />
-                CyberSecurity Resume
+                Cybersecurity Resume
               </Button>
             </a>
             <a

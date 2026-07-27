@@ -44,7 +44,7 @@ export function Hero() {
               transition={{ duration: 0.4, delay: 0.08 }}
               className="max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-5xl md:text-[4.25rem]"
             >
-              Full-stack software engineer.
+              Software and security engineer.
               <br />
               <GlitchText
                 text="Security-first mindset."
@@ -84,7 +84,7 @@ export function Hero() {
               <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
                 <Button variant="secondary" size="lg">
                   <Download className="h-5 w-5" />
-                  CyberSecurity Resume
+                  Cybersecurity Resume
                 </Button>
               </a>
               <div className="flex gap-2">

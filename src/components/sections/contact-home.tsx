@@ -15,7 +15,7 @@ export function ContactHome() {
         <SectionHeading
           label="Contact"
           title="Let's Build Something Together"
-          description="Looking for a full-stack engineer who cares about security and reliability?"
+          description="Looking for an engineer who builds secure systems — or investigates them?"
           className="[&_h2]:text-3xl [&_h2]:sm:text-4xl [&_h2]:md:text-5xl [&_h2]:leading-[1.1]"
         />
 
@@ -28,7 +28,7 @@ export function ContactHome() {
               {/* Avatar */}
               <Image
                 src="/HeadShot3.jpg"
-                alt="Andrew Vu — Full-Stack Software Engineer"
+                alt="Andrew Vu — Software and Security Engineer"
                 width={112}
                 height={112}
                 className="h-[80px] w-[80px] rounded-xl object-cover object-center shadow-md shadow-accent/10 ring-2 ring-border md:h-[96px] md:w-[96px]"
@@ -40,7 +40,7 @@ export function ContactHome() {
                   Andrew Vu
                 </h3>
                 <p className="mt-0.5 text-base text-muted-foreground sm:whitespace-nowrap sm:text-lg">
-                  Full-Stack Software Engineer &middot; Security-first mindset
+                  Software &amp; Security Engineer &middot; Oregon State University, 2026
                 </p>
                 <p className="mt-1 flex items-center justify-center gap-1 text-base text-muted-foreground md:justify-start">
                   <MapPin className="h-4 w-4 flex-shrink-0" />
