@@ -84,6 +84,13 @@ export interface Project {
   status: string;
   image?: string;
   imageFit?: "cover" | "contain";
+  /**
+   * Token-driven inline SVG card artwork, used instead of `image` where there
+   * is no publishable screenshot. Security coursework has none — the source
+   * material cannot be republished — and stock security imagery is worse than
+   * no imagery.
+   */
+  cardVisual?: "incident-timeline" | "rf-fingerprint" | "config-audit";
   confidential?: boolean;
   links?: { label: string; href: string }[];
   screenshots?: ProjectScreenshot[];
@@ -122,6 +129,8 @@ export interface Project {
   methodIntro?: string;
   method?: MethodStep[];
   findings?: FindingGroup[];
+  /** Qualifier shown under the Findings heading — e.g. that not all are listed. */
+  findingsNote?: string;
   limitsIntro?: string;
   limits?: LimitEntry[];
   takeaway?: string;
@@ -450,6 +459,329 @@ export const PROJECTS: Project[] = [
       "Enabled secure online giving via PayPal",
     ],
     artifacts: [{ label: "Screenshots", type: "screenshot" }],
+  },
+
+  // ---------------------------------------------------------------------
+  // Security casework.
+  //
+  // Appended after the software entries so /projects keeps its existing
+  // ordering priority and the home page's PROJECTS.slice(0, 3) is unchanged.
+  // Ordering on /security is controlled independently by securityOrder.
+  //
+  // Every claim below is drawn from Andrew's own methodology and analysis.
+  // Course materials — assignment prompts, instructor-supplied evidence, lab
+  // handouts, graded reports — are not reproduced, and case-scenario names,
+  // hostnames, usernames and device identifiers are not present.
+  //
+  // TODO(andrew): screenshot. None of the three entries carries a screenshot,
+  // because the only available imagery is course-derived and cannot be
+  // republished. If you want tool output on these pages, capture it from a
+  // lab VM you built yourself — your own Autopsy/Registry Explorer session
+  // against your own test image — and add it via the `screenshots` field.
+  // Do not screenshot the course evidence image, even anonymized.
+  // ---------------------------------------------------------------------
+
+  {
+    slug: "insider-threat-forensic-examination",
+    category: "security",
+    contentType: "examination",
+    securityOrder: 1,
+    featuredOnSecurity: true,
+    cardVisual: "incident-timeline",
+    title: "Insider-Threat Forensic Examination",
+    tagline:
+      "Windows 10 disk image examined for a simulated insider-threat matter, reported as expert witness testimony",
+    description:
+      "A forensic examination of a Windows 10 workstation disk image, delivered as a formal expert witness report written for counsel and non-technical readers. The report covered evidence handling, methodology, findings, a reconstructed timeline, and recommended follow-on examination. Most of the analytical work was exclusion: seven keyword hits reduced to a defensible set, and every timestamp qualified against a clock that could not be trusted.",
+    context: "CS 473 Digital Forensics · Oregon State University · Spring 2026",
+    tags: ["Forensics", "Security", "Academic"],
+    role: "Sole Examiner",
+    period: "Spring 2026",
+    status: "Individual coursework",
+    tech: [
+      "Autopsy 4.21",
+      "FTK Imager 4.5",
+      "Registry Explorer",
+      "ShellBags Explorer",
+      "HxD",
+      "Windows Event Viewer",
+      "E01 evidence images",
+      "Registry hive analysis",
+      "File carving",
+      "Timeline reconstruction",
+      "Expert witness reporting",
+    ],
+    scope:
+      "Forensic examination of a Windows 10 workstation disk image in a simulated insider-threat matter, delivered as a formal expert witness report written for counsel and non-technical readers. The report covered evidence handling, methodology, findings, a reconstructed timeline, and recommended follow-on examination.",
+    scopeNotes: [
+      "The image was acquired by a designated lead analyst in the exercise scenario. I received, verified, and examined it — I did not perform the acquisition.",
+    ],
+    environment:
+      "An E01 forensic image of a Windows 10 workstation, examined in an isolated VMware vSphere lab.",
+    tooling: [
+      {
+        name: "Autopsy 4.21",
+        purpose: "Image analysis, hive extraction, keyword search",
+      },
+      { name: "FTK Imager 4.5", purpose: "Mounting, hash verification" },
+      {
+        name: "Registry Explorer",
+        purpose: "Registry parsing (Eric Zimmerman)",
+      },
+      {
+        name: "ShellBags Explorer",
+        purpose: "Shell item parsing (Eric Zimmerman)",
+      },
+      { name: "Windows Event Viewer", purpose: "Event log analysis" },
+      { name: "HxD", purpose: "Hex-level file signature analysis" },
+    ],
+    method: [
+      {
+        title: "Malware identification",
+        detail:
+          "Parsed Windows Defender detection records and identified a Meterpreter remote-access payload staged on removable media, extracting the threat ID, severity, SHA-256 hash, parent process, user context, and the remediation action taken. Defender had suspended the file.",
+      },
+      {
+        title: "Corroboration across independent sources",
+        detail:
+          "Established the detection independently across three sources: the Defender detection record, the Defender Operational event log, and a deleted record recovered by carving unallocated space.",
+      },
+      /* TODO(andrew): the source note reads "Two originated from network
+         scanner service-pbe signature files and one from the antivirus
+         signature cache database", which is ambiguous about whether "two" and
+         "one" count hits or groups — the two readings imply a different
+         number of hits actually reported. The wording below is deliberately
+         non-numeric on that point. Confirm the split and tighten it. Also
+         confirm "service-pbe" is "service probe". */
+      {
+        title: "False positive triage",
+        detail:
+          "A full-image keyword search across live files, deleted files, the page file, and unallocated space returned seven hits, which sorted into three groups. Hits originating from network scanner probe signature files and from the antivirus signature cache database were excluded — those files legitimately contain thousands of malware names and are not indicators of compromise. Only the remaining hits were reported as findings.",
+      },
+      {
+        title: "Anti-forensics detection",
+        detail:
+          "Identified a system clock correction of 58,551 seconds (approximately 16.3 hours) that Windows refused to apply because it exceeded the maximum permitted adjustment. Every timestamp in the affected window was qualified accordingly in the report rather than being presented as reliable.",
+      },
+      {
+        title: "Timeline correlation",
+        detail:
+          "Correlated Windows Portable Device driver installation events against the antivirus detection to establish a 26-second interval between the removable device being connected and the execution attempt.",
+      },
+      {
+        title: "Registry analysis",
+        detail:
+          "Examined SYSTEM, SOFTWARE, SAM, NTUSER.DAT, and UsrClass.dat hives. USBSTOR and MountedDevices for removable media attribution; UserAssist, RecentDocs, RunMRU, TypedPaths, ComDlg32 MRU keys, MountPoints2, and Terminal Server Client keys for user activity; ShellBags for Explorer navigation history that persists after folders are deleted.",
+      },
+      {
+        title: "Event log analysis",
+        detail:
+          "Parsed 2,569 SYSTEM event log records, separating security-relevant events from benign infrastructure noise — network adapter link loss producing DNS timeouts, and an absent TPM provider. Flagged a Service Control Manager service start-type change as a possible persistence mechanism warranting further examination.",
+      },
+    ],
+    findings: [
+      {
+        items: [
+          "A Meterpreter remote-access payload was staged on removable media and detected by Windows Defender, which suspended the file before execution completed.",
+          "The detection was corroborated independently across three sources — the Defender detection record, the Defender Operational event log, and a record recovered by carving unallocated space.",
+          "Of seven keyword hits, those originating from network scanner probe signature files and from the antivirus signature cache database were excluded — such files legitimately contain thousands of malware names and are not indicators of compromise.",
+          "A system clock correction of 58,551 seconds was attempted and refused by Windows, rendering every timestamp in the affected window qualified rather than reliable.",
+          "26 seconds elapsed between the removable device being connected and the execution attempt.",
+          "A Service Control Manager service start-type change was flagged as a possible persistence mechanism warranting further examination.",
+        ],
+      },
+    ],
+    limits: [
+      {
+        claim:
+          "Removable media attribution was based on drive letter and shell item evidence.",
+        wouldConfirm:
+          "Confirming which physical device was connected requires USBSTOR and MountedDevices correlation in the SYSTEM hive, matched against device serial numbers.",
+      },
+      {
+        claim:
+          "ShellBag entries evidence that a folder view was rendered in Explorer. They do not establish that files were opened, copied, or exfiltrated.",
+      },
+      {
+        claim:
+          "The payload was suspended by Defender before execution. There is no evidence in the examined artifacts that it ran successfully.",
+      },
+      {
+        claim:
+          "Account activity establishes what a set of credentials did, not who was physically at the keyboard.",
+      },
+      {
+        claim:
+          "Clock manipulation is consistent with anti-forensic intent but has innocent explanations, including time synchronization failure and manual correction of a drifted clock.",
+      },
+    ],
+    takeaway:
+      "In a keyword-driven investigation, the analytically valuable work is often exclusion rather than discovery. Reporting a signature database as evidence of infection would have been a significant error, and the artifacts that were absent constrained the conclusions as much as the artifacts that were present.",
+  },
+
+  {
+    slug: "rf-device-authentication",
+    category: "security",
+    contentType: "project",
+    securityOrder: 2,
+    featuredOnSecurity: true,
+    cardVisual: "rf-fingerprint",
+    title: "Deep-Learning RF Device Authentication",
+    tagline:
+      "Authenticating 31 Bluetooth Low Energy devices by transmitter hardware imperfections — and measuring where that fails",
+    description:
+      "RF fingerprinting authenticates wireless devices by the manufacturing imperfections in their transmitters, identifying hardware by physical-layer characteristics rather than credentials that can be stolen or spoofed. This project tested whether a CNN could authenticate 31 BLE devices from raw IQ signal data, and whether that held up when conditions changed. It did not: cross-channel accuracy collapsed by 65 percentage points. The failure mode was the result worth reporting.",
+    context: "ECE 478 Network Security · Oregon State University · Spring 2026",
+    tags: ["Security", "Machine Learning", "Detection", "Academic"],
+    role: "Model & Training Pipeline — Four-Person Team",
+    period: "Spring 2026",
+    status: "Team coursework · IEEE-format technical report",
+    /* TODO(andrew): the source note lists a teammate's work as the "s-domain
+       experiments", which reads as a truncation of "cross-domain". Rendered
+       as cross-domain below since you ran the same-domain set — confirm. */
+    attribution:
+      "I built the CNN model and the training pipeline, implemented and ran the same-domain experiment set, and authored the team's IEEE-format technical report. Teammates ran the cross-domain experiments, the phase-derivative experiments and per-device analysis, and the comparison analysis and plots.",
+    tech: [
+      "PyTorch",
+      "Convolutional neural networks",
+      "1D CNN",
+      "IQ signal data",
+      "Bluetooth Low Energy",
+      "RF fingerprinting",
+      "Domain shift analysis",
+      "Python",
+    ],
+    scope:
+      "RF fingerprinting authenticates wireless devices by the manufacturing imperfections in their transmitters — small variations in oscillators, amplifiers, mixers, and filters that produce a device-specific signature in the transmitted signal. This identifies hardware by physical-layer characteristics rather than cryptographic credentials that can be stolen or spoofed, which matters for IoT and BLE devices that cannot hold strong secrets. The project tested whether a CNN could authenticate 31 Bluetooth Low Energy devices from raw IQ signal data, and whether that held up when conditions changed.",
+    environment:
+      "A dataset of 31 BLE devices collected at Oregon State's NetSTAR lab, 1,850 IQ data points per sample. Two scenarios were tested: varying frequency channel (2.406, 2.408, 2.434, 2.470 GHz) with location fixed, and varying transmitter distance (1 m, 1.5 m, 2 m, 3 m) with channel fixed.",
+    tooling: [
+      { name: "PyTorch", purpose: "Model definition and training" },
+      {
+        name: "NetSTAR lab dataset",
+        purpose: "31 BLE devices, 1,850 IQ data points per sample",
+      },
+    ],
+    methodIntro:
+      "A four-layer 1D convolutional network — 64, 128, 128, and 256 filters with kernel sizes 7, 5, 3, 3 — each layer using batch normalization, ReLU, and pooling, with an adaptive final pooling layer so the same architecture accepts both raw IQ and the shorter phase-derivative input. Two fully connected layers with dropout at 0.5 and 0.3. Trained with Adam at learning rate 1e-3, cross-entropy loss, and a ReduceLROnPlateau scheduler, for 30 epochs with a 10% validation split used for best-epoch selection. The test set was never used during training.",
+    findings: [
+      {
+        items: [
+          "Same-domain, where training and test conditions match: 93.2% mean accuracy across frequency channels, 99.4% across transmitter locations.",
+          "Cross-domain with raw IQ, where the model is trained in one condition and tested in another: accuracy collapsed to 28.1% across channels — a 65-percentage-point drop — and 71.8% across locations, a 27.7-point drop.",
+          "Channel shift degrades performance far more than location shift. Changing carrier frequency changes how the transmitter hardware itself responds; changing distance mostly changes signal amplitude and multipath.",
+          "Using the phase derivative of the BLE preamble instead of raw IQ recovered much of the loss: cross-channel accuracy rose from 28.1% to 74.8%, and cross-location from 71.8% to 95.3%, reducing the location domain gap to 4.2 points.",
+          "Transfer was asymmetric — models trained on a mid-range channel generalized better than models trained at the edge of the frequency range.",
+        ],
+      },
+    ],
+    limits: [
+      {
+        claim:
+          "Same-domain accuracy above 99% is the easy case and should not be read as deployment performance. The honest result is the cross-domain collapse: a fingerprinting model trained under one set of RF conditions cannot be assumed to authenticate the same devices under different conditions.",
+        wouldConfirm:
+          "Deploying this as a real authentication control would require domain adaptation or multi-channel training, and would need validation against an adversary actively attempting to mimic a target device's signature — which this work did not test.",
+      },
+    ],
+    takeaway:
+      "The interesting result was the failure mode, not the accuracy figure. Raw IQ mixes the device's hardware signature with channel and environment effects, and the model learns both — so the learned features stop matching when conditions change.",
+    reference:
+      "H. Albousayri, B. Hamdaoui, W.-K. Wong, and N. Basha, “Bluetooth Fingerprint Identification Under Domain Shift Through Transient Phase Derivative,” IEEE Conference on Communications and Network Security (CNS), 2025.",
+  },
+
+  {
+    slug: "enterprise-vulnerability-assessment",
+    category: "security",
+    contentType: "assessment",
+    securityOrder: 3,
+    featuredOnSecurity: true,
+    cardVisual: "config-audit",
+    title: "Enterprise Vulnerability Assessment",
+    tagline:
+      "17 vulnerabilities across a Windows Active Directory domain and a Linux server, ahead of a live instructor-run attack",
+    description:
+      "An assessment of a deliberately misconfigured enterprise environment — a Windows Active Directory domain and a Linux server — carried out ahead of a live exercise in which instructors attacked the environment. I identified and documented 17 vulnerabilities, each with affected systems, exploitation impact, and specific remediation, feeding a board-level remediation proposal. The most serious finding was a single misdirected line in a configuration file.",
+    context:
+      "CS 373 Defense Against the Dark Arts: Enterprise Defense · Oregon State University · Winter 2026",
+    tags: ["Assessment", "Security", "Academic"],
+    role: "Vulnerability Assessment Lead — Five-Person Team",
+    period: "Winter 2026",
+    status: "Team coursework",
+    attribution:
+      "I led the vulnerability assessment: I identified and documented the 17 vulnerabilities below, each with affected systems, exploitation impact, and specific remediation, which fed the team's board-level remediation proposal.",
+    tech: [
+      "Active Directory Domain Services",
+      "Group Policy",
+      "NTLM & Kerberos",
+      "SMB signing",
+      "RDP / Network Level Authentication",
+      "Linux hardening",
+      "OpenSSH / sshd_config",
+      "vsftpd",
+      "Vulnerability assessment",
+    ],
+    scope:
+      "Assessment of a deliberately misconfigured enterprise environment — a Windows Active Directory domain and a Linux server — ahead of a live exercise in which instructors attacked the environment. I identified and documented 17 vulnerabilities, each with affected systems, exploitation impact, and specific remediation, feeding a board-level remediation proposal.",
+    environment:
+      "A deliberately misconfigured enterprise environment: a Windows Active Directory domain and a Linux server.",
+    /* TODO(andrew): no tool list was recorded for this assessment. If you used
+       specific tooling to enumerate Group Policy and service configuration
+       (e.g. gpresult, secedit, a STIG viewer, an SSH/FTP banner check), add it
+       to `tooling` below so this section matches the depth of the other two
+       case studies. Do not invent one. */
+    methodIntro:
+      "Configuration review rather than exploitation testing. Each of the 17 findings records the affected systems, the impact if the condition were exploited, and a specific remediation.",
+    /* TODO(andrew): the source material for this assessment records findings
+       but not an ordered method. If you can reconstruct the sequence you
+       actually worked in — e.g. Group Policy review, then service
+       configuration review, then severity ranking — add it to `method` as
+       MethodStep entries. Left absent rather than reconstructed from the
+       findings, which would be a guess. */
+    /* TODO(andrew): the source material enumerates 10 of the 17 findings —
+       seven Windows/Group Policy and three Linux. The remaining seven are not
+       described anywhere available, so they are not listed. The count line
+       below says so explicitly rather than letting a reader who counts
+       conclude the total was overstated. Supply the other seven if you want
+       them published. */
+    findingsNote:
+      "Ten of the seventeen findings are reproduced here — the seven Windows Group Policy findings and the three Linux findings. The remainder are not published.",
+    findings: [
+      {
+        group: "Windows / Active Directory Group Policy",
+        items: [
+          "Passwords stored using reversible encryption, making stored credentials recoverable in plaintext",
+          "Minimum password length set to zero characters, complexity requirements disabled",
+          "NTLM minimum session security set to None",
+          "SMB signing disabled, permitting relay and tampering attacks",
+          "Software restriction policy set to allow all, providing no application control",
+          "Insecure guest logons enabled",
+          "RDP exposed with Network Level Authentication disabled",
+        ],
+      },
+      {
+        group: "Linux",
+        lead: "The SSH daemon was configured to serve /etc/shadow as its pre-authentication login banner. Any host that merely opened a connection received the system's password hashes before authenticating. Pre-authentication disclosure is categorically worse than a weak password policy, because no credential and no access is required to exploit it.",
+        items: [
+          "Password authentication permitted over SSH, with no limit on concurrent sessions",
+          "vsftpd configured to permit anonymous login, anonymous upload, and anonymous directory creation, rooted at /, over an unencrypted channel",
+        ],
+      },
+    ],
+    limits: [
+      {
+        claim:
+          "This was configuration review, not exploitation. Each finding identifies a condition that permits an attack; it does not establish that the attack succeeded in that environment.",
+        wouldConfirm:
+          "Confirming exploitability would require controlled testing against each specific misconfiguration.",
+      },
+    ],
+    takeaway:
+      "Severity does not track with complexity. The most serious finding was a single line in a configuration file pointing a banner at the wrong path — trivially fixed, and worse than every password policy weakness in the environment combined.",
+    /* TODO(andrew): a detection-design section (Windows Advanced Audit Policy,
+       command-line and PowerShell script-block logging, Wazuh SIEM agent with
+       Sysmon and Autoruns) exists in the team deliverable, but ownership
+       between team members is unconfirmed. Do not publish it until you confirm
+       it was your work. */
   },
 ];
 

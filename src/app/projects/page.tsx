@@ -11,6 +11,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Stagger, StaggerItem } from "@/components/ui/motion-wrapper";
 import { cn } from "@/lib/utils";
 import { getTagVariant } from "@/lib/tag-variants";
+import { ProjectCardVisual } from "@/components/projects/project-card-visual";
 
 export default function ProjectsPage() {
   const [activeTag, setActiveTag] = useState<ProjectTag | "All">("All");
@@ -68,7 +69,12 @@ export default function ProjectsPage() {
               >
                 <Card className="flex h-full flex-col">
                   <div className="relative mb-4 h-48 overflow-hidden rounded-lg bg-muted/50">
-                    {project.image ? (
+                    {project.cardVisual ? (
+                      <ProjectCardVisual
+                        visual={project.cardVisual}
+                        label={`${project.title} — diagram`}
+                      />
+                    ) : project.image ? (
                       <Image
                         src={project.image}
                         alt={`${project.title} screenshot`}
