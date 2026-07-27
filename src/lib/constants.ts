@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   title: "Andrew Vu — Full-Stack Engineer",
   description:
     "Full-stack engineer with a security-first mindset. Building reliable, secure systems from Oregon State University to production.",
-  url: "https://andrewvu.dev",
+  url: "https://andrewvu.tech",
   email: "Andrewv11789@gmail.com",
   phone: "503-954-7316",
   github: "https://github.com/Vuand",

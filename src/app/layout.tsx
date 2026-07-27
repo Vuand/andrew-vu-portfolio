@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   },
   description: SITE_CONFIG.description,
   metadataBase: new URL(SITE_CONFIG.url),
+  // "./" resolves against metadataBase + the current pathname, so every route
+  // emits its own canonical on the apex host (Vercel redirects www → apex).
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,

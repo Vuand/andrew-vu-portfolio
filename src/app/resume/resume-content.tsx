@@ -222,7 +222,7 @@ export function ResumeContent() {
               </li>
               <li className="flex gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                Student Ambassador — Oregon University
+                Student Ambassador — Oregon State University
               </li>
               <li className="flex gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
@@ -249,18 +249,6 @@ export function ResumeContent() {
           </ResumeSection>
         </FadeIn>
 
-        {/* PDF embed placeholder */}
-        <FadeIn>
-          <div className="mt-16 rounded-xl border border-border bg-muted/30 p-12 text-center">
-            <p className="text-sm text-muted-foreground">
-              [Resume PDF embed placeholder — add{" "}
-              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">
-                /public/documents/AndrewVu_Resume_SoftwareEngineer.pdf
-              </code>{" "}
-              to enable]
-            </p>
-          </div>
-        </FadeIn>
       </div>
     </div>
   );
