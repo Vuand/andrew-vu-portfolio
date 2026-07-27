@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface SectionHeadingProps {
   label?: string;
@@ -9,6 +9,11 @@ interface SectionHeadingProps {
   description?: string;
   className?: string;
   align?: "left" | "center";
+  /**
+   * Heading level. Pages whose main heading IS this component must pass "h1";
+   * /projects, /resume and /contact previously had no h1 at all.
+   */
+  as?: "h1" | "h2";
 }
 
 export function SectionHeading({
@@ -17,13 +22,16 @@ export function SectionHeading({
   description,
   className,
   align = "center",
+  as: Heading = "h2",
 }: SectionHeadingProps) {
+  const reduce = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={reduce ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5 }}
+      transition={reduce ? { duration: 0 } : { duration: 0.5 }}
       className={cn(
         "mb-8",
         align === "center" && "text-center",
@@ -35,9 +43,9 @@ export function SectionHeading({
           {label}
         </span>
       )}
-      <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+      <Heading className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl mx-auto">
           {description}

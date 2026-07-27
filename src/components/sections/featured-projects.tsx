@@ -6,7 +6,7 @@ import { ArrowRight, Lock, Shield, Globe, Activity } from "lucide-react";
 import { PROJECTS } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Stagger, StaggerItem } from "@/components/ui/motion-wrapper";
 import { getTagVariant } from "@/lib/tag-variants";
@@ -133,10 +133,11 @@ export function FeaturedProjects() {
         </Stagger>
 
         <div className="mt-10 text-center">
-          <Link href="/projects">
-            <Button variant="secondary">
-              View All Projects <ArrowRight className="h-4 w-4" />
-            </Button>
+          <Link
+            href="/projects"
+            className={buttonVariants({ variant: "secondary" })}
+          >
+            View All Projects <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

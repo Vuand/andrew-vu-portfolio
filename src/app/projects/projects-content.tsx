@@ -28,11 +28,18 @@ export function ProjectsContent() {
           label="Projects"
           title="What I've Built"
           description="End-to-end systems — designed, built, shipped, and maintained."
+          as="h1"
         />
 
         {/* Filter chips */}
-        <div className="mb-10 flex flex-wrap justify-center gap-2">
+        <div
+          className="mb-10 flex flex-wrap justify-center gap-2"
+          role="group"
+          aria-label="Filter by tag"
+        >
           <button
+            type="button"
+            aria-pressed={activeTag === "All"}
             onClick={() => setActiveTag("All")}
             className={cn(
               "rounded-full px-4 py-1.5 text-sm font-medium transition-colors cursor-pointer",
@@ -46,6 +53,8 @@ export function ProjectsContent() {
           {ALL_TAGS.map((tag) => (
             <button
               key={tag}
+              type="button"
+              aria-pressed={activeTag === tag}
               onClick={() => setActiveTag(tag)}
               className={cn(
                 "rounded-full px-4 py-1.5 text-sm font-medium transition-colors cursor-pointer",

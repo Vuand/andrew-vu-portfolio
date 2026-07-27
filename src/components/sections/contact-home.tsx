@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/ui/motion-wrapper";
@@ -50,11 +50,16 @@ export function ContactHome() {
 
               {/* Actions */}
               <div className="flex w-full flex-col items-stretch gap-2.5 sm:flex-row sm:items-center sm:justify-center md:w-auto md:justify-end">
-                <a href={`mailto:${SITE_CONFIG.email}`} className="w-full sm:w-auto">
-                  <Button variant="accent" size="md" className="w-full sm:w-auto">
-                    <Mail className="h-4 w-4" />
-                    {SITE_CONFIG.email}
-                  </Button>
+                <a
+                  href={`mailto:${SITE_CONFIG.email}`}
+                  className={buttonVariants({
+                    variant: "accent",
+                    size: "md",
+                    className: "w-full sm:w-auto",
+                  })}
+                >
+                  <Mail className="h-4 w-4" />
+                  Email {SITE_CONFIG.email}
                 </a>
                 <CopyButton
                   text={SITE_CONFIG.email}

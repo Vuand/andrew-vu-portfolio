@@ -81,8 +81,14 @@ export function GlitchText({
   }, [started, animate, prefersReduced, text]);
 
   return (
-    <Tag className={cn("font-mono", className)} aria-label={text}>
-      {started ? display || "\u00A0" : "\u00A0"}
+    <Tag className={cn("font-mono", className)}>
+      {/* The animated characters are decorative — aria-label on a bare span is
+          not reliably exposed, and this renders inside the h1, so without this
+          split the heading's accessible name was scrambled glyphs. */}
+      <span aria-hidden="true">
+        {started ? display || "\u00A0" : "\u00A0"}
+      </span>
+      <span className="sr-only">{text}</span>
     </Tag>
   );
 }

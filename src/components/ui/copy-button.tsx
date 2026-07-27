@@ -7,13 +7,11 @@ import { Toast } from "./toast";
 
 interface CopyButtonProps extends Omit<ButtonProps, "onClick"> {
   text: string;
-  label?: string;
   toastMessage?: string;
 }
 
 export function CopyButton({
   text,
-  label = "Copy",
   toastMessage = "Copied to clipboard",
   children,
   ...props
@@ -42,7 +40,10 @@ export function CopyButton({
     <>
       <Button
         onClick={handleCopy}
-        aria-label={copied ? "Copied" : label}
+        type="button"
+        // No aria-label: the visible children ("Copy Email") are the better
+        // accessible name, and an aria-label of "Copy" would override and
+        // shorten it. State is announced via the toast's live region instead.
         {...props}
       >
         {copied ? (

@@ -1,7 +1,7 @@
 "use client";
 
 import { Mail, Github, Linkedin, MapPin, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/motion-wrapper";
@@ -39,6 +39,7 @@ export function ContactContent() {
           label="// contact"
           title="Let's Connect"
           description="Looking for an engineer who builds secure systems — or investigates them? I'd like to hear about what you're working on."
+          as="h1"
         />
 
         <Stagger className="grid gap-4 md:grid-cols-3">
@@ -69,11 +70,13 @@ export function ContactContent() {
                       href={method.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className={buttonVariants({
+                        variant: "secondary",
+                        size: "sm",
+                      })}
                     >
-                      <Button variant="secondary" size="sm">
-                        Visit
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </Button>
+                      Visit {method.label}
+                      <ArrowRight className="h-3.5 w-3.5" />
                     </a>
                   )}
                 </div>
@@ -84,7 +87,7 @@ export function ContactContent() {
 
         {/* Direct email CTA */}
         <FadeIn>
-          <div className="mt-16 rounded-2xl border border-border bg-card p-10 text-center md:p-14">
+          <div className="relative mt-16 overflow-hidden rounded-2xl border border-border bg-card p-10 text-center md:p-14">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-purple-500/5 rounded-2xl" />
             <h2 className="text-2xl font-bold text-foreground md:text-3xl">
               Prefer email?
@@ -94,11 +97,12 @@ export function ContactContent() {
               building. I respond to every message.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <a href={`mailto:${SITE_CONFIG.email}`}>
-                <Button variant="accent" size="lg">
-                  <Mail className="h-4 w-4" />
-                  {SITE_CONFIG.email}
-                </Button>
+              <a
+                href={`mailto:${SITE_CONFIG.email}`}
+                className={buttonVariants({ variant: "accent", size: "lg" })}
+              >
+                <Mail className="h-4 w-4" />
+                Email {SITE_CONFIG.email}
               </a>
               <CopyButton
                 text={SITE_CONFIG.email}

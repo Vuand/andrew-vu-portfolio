@@ -3,13 +3,18 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Linkedin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { GlitchText } from "@/components/ui/glitch-text";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export function Hero() {
   const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById("projects");
+    if (!el) return;
+    // A JS-specified "smooth" overrides the CSS scroll-behavior override, so
+    // the reduced-motion preference has to be checked here too.
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
   };
 
   return (
@@ -75,17 +80,21 @@ export function Hero() {
                 View Projects
                 <ArrowDown className="h-5 w-5" />
               </Button>
-              <a href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf" download>
-                <Button variant="secondary" size="lg">
-                  <Download className="h-5 w-5" />
-                  Software Engineering Resume
-                </Button>
+              <a
+                href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf"
+                download
+                className={buttonVariants({ variant: "secondary", size: "lg" })}
+              >
+                <Download className="h-5 w-5" />
+                Software Engineering Resume
               </a>
-              <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
-                <Button variant="secondary" size="lg">
-                  <Download className="h-5 w-5" />
-                  Cybersecurity Resume
-                </Button>
+              <a
+                href="/documents/AndrewVu_Resume_Cybersecurity.pdf"
+                download
+                className={buttonVariants({ variant: "secondary", size: "lg" })}
+              >
+                <Download className="h-5 w-5" />
+                Cybersecurity Resume
               </a>
               {/* GitHub is deliberately not a top-of-page CTA: the public
                   repos contain no security work — coursework is restricted
@@ -96,10 +105,10 @@ export function Hero() {
                   href={SITE_CONFIG.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className={buttonVariants({ variant: "ghost", size: "icon" })}
                 >
-                  <Button variant="ghost" size="icon" aria-label="LinkedIn">
-                    <Linkedin className="h-[22px] w-[22px]" />
-                  </Button>
+                  <Linkedin className="h-[22px] w-[22px]" />
                 </a>
               </div>
             </motion.div>

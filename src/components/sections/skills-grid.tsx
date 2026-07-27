@@ -28,8 +28,16 @@ export function SkillsGrid() {
 
         {/* Tab toggle */}
         <div className="mb-10 flex justify-center">
-          <div className="inline-flex rounded-lg border border-border bg-card p-1">
+          <div
+            role="tablist"
+            aria-label="Skill category"
+            className="inline-flex rounded-lg border border-border bg-card p-1"
+          >
             <button
+              role="tab"
+              id="skills-tab-software"
+              aria-selected={activeTab === "software"}
+              aria-controls="skills-panel"
               onClick={() => setActiveTab("software")}
               className={cn(
                 "rounded-md px-6 py-2.5 text-base font-medium transition-colors cursor-pointer",
@@ -41,6 +49,10 @@ export function SkillsGrid() {
               Software
             </button>
             <button
+              role="tab"
+              id="skills-tab-security"
+              aria-selected={activeTab === "security"}
+              aria-controls="skills-panel"
               onClick={() => setActiveTab("security")}
               className={cn(
                 "rounded-md px-6 py-2.5 text-base font-medium transition-colors cursor-pointer",
@@ -54,6 +66,11 @@ export function SkillsGrid() {
           </div>
         </div>
 
+        <div
+          id="skills-panel"
+          role="tabpanel"
+          aria-labelledby={`skills-tab-${activeTab}`}
+        >
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" key={activeTab}>
           {categories.map((cat) => (
             <StaggerItem key={cat.name}>
@@ -75,6 +92,7 @@ export function SkillsGrid() {
             </StaggerItem>
           ))}
         </Stagger>
+        </div>
       </div>
     </section>
   );

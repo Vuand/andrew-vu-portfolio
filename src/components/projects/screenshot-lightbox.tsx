@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { AnimatePresence, motion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { ProjectScreenshot } from "@/data/projects";
@@ -23,6 +23,9 @@ export function ScreenshotLightbox({
 }: ScreenshotLightboxProps) {
   const isOpen = index !== null;
   const total = screenshots.length;
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
 
   const goPrev = useCallback(() => {
     if (index === null) return;
@@ -36,17 +39,54 @@ export function ScreenshotLightbox({
 
   useEffect(() => {
     if (!isOpen) return;
+
+    // Remember what to hand focus back to, then move focus into the dialog —
+    // without this, an aria-modal dialog opens with focus still behind it.
+    returnFocusRef.current = document.activeElement as HTMLElement | null;
+    const focusTimer = window.setTimeout(() => closeRef.current?.focus(), 0);
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      else if (e.key === "ArrowLeft") goPrev();
-      else if (e.key === "ArrowRight") goNext();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        goPrev();
+        return;
+      }
+      if (e.key === "ArrowRight") {
+        goNext();
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      // Trap Tab inside the dialog.
+      const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusables || focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+
+      if (e.shiftKey && (active === first || !dialogRef.current?.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
+
     window.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     return () => {
+      window.clearTimeout(focusTimer);
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
+      returnFocusRef.current?.focus();
     };
   }, [isOpen, onClose, goPrev, goNext]);
 
@@ -64,6 +104,7 @@ export function ScreenshotLightbox({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
+          ref={dialogRef}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
           onClick={onClose}
           role="dialog"
@@ -71,6 +112,7 @@ export function ScreenshotLightbox({
           aria-label="Screenshot viewer"
         >
           <button
+            ref={closeRef}
             type="button"
             onClick={(e) => {
               e.stopPropagation();

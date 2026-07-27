@@ -15,7 +15,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/motion-wrapper";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { getSecurityCaseStudies, getContentTypeLabel } from "@/data/projects";
 import {
   SECURITY_POSITIONING,
@@ -349,17 +349,20 @@ export function SecurityContent() {
                   the PDF against this page will not find them. No placeholder
                   has been generated; drop the real file in at the same path
                   and nothing here needs to change. */}
-              <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
-                <Button variant="accent" size="md">
-                  <Download className="h-4 w-4" />
-                  Cybersecurity Resume
-                </Button>
+              <a
+                href="/documents/AndrewVu_Resume_Cybersecurity.pdf"
+                download
+                className={buttonVariants({ variant: "accent", size: "md" })}
+              >
+                <Download className="h-4 w-4" />
+                Cybersecurity Resume
               </a>
-              <Link href="/contact">
-                <Button variant="secondary" size="md">
-                  Get in touch
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
+              <Link
+                href="/contact"
+                className={buttonVariants({ variant: "secondary", size: "md" })}
+              >
+                Get in touch
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>

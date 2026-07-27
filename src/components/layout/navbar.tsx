@@ -47,10 +47,21 @@ export function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
+  // Escape closes the mobile menu — expected of any expanded disclosure.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      el.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
       setMobileOpen(false);
     }
   };
@@ -80,6 +91,8 @@ export function Navbar() {
                 ...HOME_SECTIONS.map((section) => (
                   <button
                     key={section.id}
+                    type="button"
+                    aria-current={activeSection === section.id ? "true" : undefined}
                     onClick={() => scrollTo(section.id)}
                     className={cn(
                       "rounded-lg px-3 py-2 text-base font-medium transition-colors cursor-pointer",
@@ -110,6 +123,7 @@ export function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    aria-current={isActive ? "page" : undefined}
                     className={cn(
                       "rounded-lg px-3 py-2 text-base font-medium transition-colors",
                       isActive
@@ -134,6 +148,7 @@ export function Navbar() {
             className="rounded-lg p-2 text-foreground transition-colors hover:bg-muted cursor-pointer"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             {mobileOpen ? (
               <X className="h-5 w-5" />
@@ -152,6 +167,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
+            id="mobile-menu"
             className="overflow-hidden border-b border-border glass md:hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-4">
@@ -160,6 +176,8 @@ export function Navbar() {
                     ...HOME_SECTIONS.map((section) => (
                       <button
                         key={section.id}
+                        type="button"
+                        aria-current={activeSection === section.id ? "true" : undefined}
                         onClick={() => scrollTo(section.id)}
                         className={cn(
                           "rounded-lg px-3 py-3 text-left text-base font-medium transition-colors cursor-pointer",
@@ -190,6 +208,7 @@ export function Navbar() {
                       <Link
                         key={link.href}
                         href={link.href}
+                        aria-current={isActive ? "page" : undefined}
                         className={cn(
                           "rounded-lg px-3 py-3 text-base font-medium transition-colors",
                           isActive

@@ -1,7 +1,7 @@
 "use client";
 
 import { Download, ExternalLink, MapPin, GraduationCap, Briefcase, Trophy, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/ui/motion-wrapper";
@@ -15,40 +15,43 @@ export function ResumeContent() {
           label="// resume"
           title="Andrew Vu"
           description="Software &amp; Security Engineer &middot; Digital Forensics &middot; Secure Systems"
+          as="h1"
         />
 
         {/* Download + links */}
         <FadeIn>
           <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
-            <a href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf" download>
-              <Button variant="accent">
-                <Download className="h-4 w-4" />
-                Software Engineering Resume
-              </Button>
+            <a
+              href="/documents/AndrewVu_Resume_SoftwareEngineer.pdf"
+              download
+              className={buttonVariants({ variant: "accent" })}
+            >
+              <Download className="h-4 w-4" />
+              Software Engineering Resume
             </a>
-            <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
-              <Button variant="accent">
-                <Download className="h-4 w-4" />
-                Cybersecurity Resume
-              </Button>
+            <a
+              href="/documents/AndrewVu_Resume_Cybersecurity.pdf"
+              download
+              className={buttonVariants({ variant: "accent" })}
+            >
+              <Download className="h-4 w-4" />
+              Cybersecurity Resume
             </a>
             <a
               href={SITE_CONFIG.github}
               target="_blank"
               rel="noopener noreferrer"
+              className={buttonVariants({ variant: "secondary", size: "sm" })}
             >
-              <Button variant="secondary" size="sm">
-                GitHub <ExternalLink className="h-3.5 w-3.5" />
-              </Button>
+              GitHub <ExternalLink className="h-3.5 w-3.5" />
             </a>
             <a
               href={SITE_CONFIG.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              className={buttonVariants({ variant: "secondary", size: "sm" })}
             >
-              <Button variant="secondary" size="sm">
-                LinkedIn <ExternalLink className="h-3.5 w-3.5" />
-              </Button>
+              LinkedIn <ExternalLink className="h-3.5 w-3.5" />
             </a>
           </div>
         </FadeIn>
