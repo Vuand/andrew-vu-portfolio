@@ -21,6 +21,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { FadeIn } from "@/components/ui/motion-wrapper";
 import { getTagVariant } from "@/lib/tag-variants";
 import { IncidentTimeline } from "@/components/projects/incident-timeline";
+import { CaseSection } from "@/components/projects/case-section";
 
 /**
  * Template for security casework.
@@ -38,15 +39,25 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
 
       <article className="pt-24 pb-20">
         <div className="mx-auto max-w-4xl px-6">
-          {/* Back link */}
+          {/* These pages are reached from both /security and /projects, so a
+              single back destination would be wrong for half of arrivals. */}
           <FadeIn>
-            <Link
-              href="/projects"
-              className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to projects
-            </Link>
+            <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+              <Link
+                href="/security"
+                className="inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back to security
+              </Link>
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                All projects
+              </Link>
+            </div>
           </FadeIn>
 
           {/* Header */}
@@ -54,6 +65,9 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
             <header className="mb-10">
               <div className="mb-4 flex flex-wrap items-center gap-2">
                 <Badge variant="outline">{getContentTypeLabel(project)}</Badge>
+                {project.status && (
+                  <Badge variant="outline">{project.status}</Badge>
+                )}
                 {project.tags.map((tag) => (
                   <Badge key={tag} variant={getTagVariant(tag)}>
                     {tag}
@@ -120,7 +134,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
           {/* 1 — Scope */}
           {project.scope && (
             <FadeIn>
-              <Section title="Scope" icon={ScanSearch}>
+              <CaseSection title="Scope" icon={ScanSearch}>
                 <p className="leading-relaxed text-muted-foreground">
                   {project.scope}
                 </p>
@@ -136,7 +150,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
                     ))}
                   </div>
                 )}
-              </Section>
+              </CaseSection>
             </FadeIn>
           )}
 
@@ -144,7 +158,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
           {(project.environment ||
             (project.tooling && project.tooling.length > 0)) && (
             <FadeIn>
-              <Section title="Environment & tooling" icon={Terminal}>
+              <CaseSection title="Environment & tooling" icon={Terminal}>
                 {project.environment && (
                   <p className="leading-relaxed text-muted-foreground">
                     {project.environment}
@@ -166,7 +180,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
                     ))}
                   </dl>
                 )}
-              </Section>
+              </CaseSection>
             </FadeIn>
           )}
 
@@ -174,7 +188,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
           {(project.methodIntro ||
             (project.method && project.method.length > 0)) && (
             <FadeIn>
-              <Section title="Method" icon={ListOrdered}>
+              <CaseSection title="Method" icon={ListOrdered}>
                 {project.methodIntro && (
                   <p className="mb-6 leading-relaxed text-muted-foreground">
                     {project.methodIntro}
@@ -207,14 +221,14 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
                     <IncidentTimeline />
                   </div>
                 )}
-              </Section>
+              </CaseSection>
             </FadeIn>
           )}
 
           {/* 4 — Findings */}
           {project.findings && project.findings.length > 0 && (
             <FadeIn>
-              <Section title="Findings" icon={FileSearch}>
+              <CaseSection title="Findings" icon={FileSearch}>
                 {project.findingsNote && (
                   <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
                     {project.findingsNote}
@@ -251,7 +265,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
                     </div>
                   ))}
                 </div>
-              </Section>
+              </CaseSection>
             </FadeIn>
           )}
 
@@ -298,18 +312,18 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
           {/* 6 — Takeaway */}
           {project.takeaway && (
             <FadeIn>
-              <Section title="Takeaway" icon={Lightbulb}>
+              <CaseSection title="Takeaway" icon={Lightbulb}>
                 <p className="text-lg leading-relaxed text-foreground/90">
                   {project.takeaway}
                 </p>
-              </Section>
+              </CaseSection>
             </FadeIn>
           )}
 
           {/* Tools & techniques */}
           {project.tech.length > 0 && (
             <FadeIn>
-              <Section title="Tools & techniques">
+              <CaseSection title="Tools & techniques">
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((t) => (
                     <Badge key={t} variant="default">
@@ -317,18 +331,18 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
                     </Badge>
                   ))}
                 </div>
-              </Section>
+              </CaseSection>
             </FadeIn>
           )}
 
           {/* Reference */}
           {project.reference && (
             <FadeIn>
-              <Section title="Reference" icon={BookMarked}>
+              <CaseSection title="Reference" icon={BookMarked}>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   {project.reference}
                 </p>
-              </Section>
+              </CaseSection>
             </FadeIn>
           )}
 
@@ -370,25 +384,5 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
         </div>
       </article>
     </>
-  );
-}
-
-function Section({
-  title,
-  icon: Icon,
-  children,
-}: {
-  title: string;
-  icon?: React.ComponentType<{ className?: string }>;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="mb-12">
-      <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold text-foreground">
-        {Icon && <Icon className="h-6 w-6 shrink-0 text-accent" />}
-        {title}
-      </h2>
-      {children}
-    </section>
   );
 }

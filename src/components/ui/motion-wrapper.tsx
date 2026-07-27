@@ -15,7 +15,7 @@ const fadeInUp: Variants = {
  *
  * These wrappers are used by almost every section on the site, so honouring
  * prefers-reduced-motion here is what actually makes the site respect the
- * setting — GlitchText and TypewriterText already handled it individually.
+ * setting — GlitchText already handled it individually.
  */
 const noMotion: Variants = {
   hidden: { opacity: 1, y: 0 },

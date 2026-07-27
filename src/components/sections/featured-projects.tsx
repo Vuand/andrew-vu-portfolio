@@ -9,7 +9,13 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Stagger, StaggerItem } from "@/components/ui/motion-wrapper";
 import { getTagVariant } from "@/lib/tag-variants";
 
-const featured = PROJECTS.slice(0, 3);
+// Explicit slugs rather than PROJECTS.slice(0, 3): the slice silently
+// depended on the software entries staying first in the array, which stopped
+// being obvious once security casework was appended.
+const FEATURED_SLUGS = ["stroke-vision", "sponsorhub", "home-assistant-ai"];
+const featured = FEATURED_SLUGS.map((slug) =>
+  PROJECTS.find((p) => p.slug === slug)
+).filter((p): p is (typeof PROJECTS)[number] => Boolean(p));
 
 const proofTiles = [
   {

@@ -4,7 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Lock } from "lucide-react";
-import { PROJECTS, ALL_TAGS, type ProjectTag } from "@/data/projects";
+import {
+  PROJECTS,
+  ALL_TAGS,
+  getContentTypeLabel,
+  type ProjectTag,
+} from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -125,6 +130,11 @@ export function ProjectsContent() {
                     <p className="mt-1 text-sm text-muted-foreground">
                       {project.tagline}
                     </p>
+                    {project.context && (
+                      <p className="mt-1.5 font-mono text-xs leading-snug text-muted-foreground">
+                        {project.context}
+                      </p>
+                    )}
                     <p className="mt-3 text-sm text-muted-foreground line-clamp-3">
                       {project.description}
                     </p>
@@ -135,7 +145,7 @@ export function ProjectsContent() {
                       {project.period}
                     </span>
                     <span className="flex items-center gap-1 text-sm font-medium text-accent">
-                      Read case study
+                      Read {getContentTypeLabel(project).toLowerCase()}
                       <ArrowRight className="h-3.5 w-3.5" />
                     </span>
                   </div>

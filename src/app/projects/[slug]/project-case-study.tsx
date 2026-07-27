@@ -9,10 +9,6 @@ import {
   Lock,
   Shield,
   Scale,
-  // FileText,
-  // Image as ImageIcon,
-  // Play,
-  // AlertTriangle,
 } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
@@ -20,14 +16,8 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { FadeIn } from "@/components/ui/motion-wrapper";
 import { SponsorHubDiagram } from "@/components/projects/sponsorhub-diagram";
 import { ScreenshotLightbox } from "@/components/projects/screenshot-lightbox";
+import { CaseSection } from "@/components/projects/case-section";
 import { getTagVariant } from "@/lib/tag-variants";
-
-// const artifactIcons = {
-//   diagram: FileText,
-//   screenshot: ImageIcon,
-//   video: Play,
-//   "threat-model": AlertTriangle,
-// };
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -296,59 +286,8 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
             />
           )}
 
-          {/* Artifacts — commented out until proper media is added
-          {project.artifacts.length > 0 && (
-            <FadeIn>
-              <CaseSection title="Artifacts">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {project.artifacts.map((artifact) => {
-                    const Icon = artifactIcons[artifact.type];
-                    return (
-                      <div
-                        key={artifact.label}
-                        className="flex items-center gap-3 rounded-lg border border-border bg-muted/30 p-4"
-                      >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
-                          <Icon className="h-5 w-5 text-accent" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-foreground">
-                            {artifact.label}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            [placeholder — to be added]
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </CaseSection>
-            </FadeIn>
-          )}
-          */}
         </div>
       </article>
     </>
-  );
-}
-
-function CaseSection({
-  title,
-  icon: Icon,
-  children,
-}: {
-  title: string;
-  icon?: React.ComponentType<{ className?: string }>;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="mb-12">
-      <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold text-foreground">
-        {Icon && <Icon className="h-6 w-6 text-accent" />}
-        {title}
-      </h2>
-      {children}
-    </section>
   );
 }

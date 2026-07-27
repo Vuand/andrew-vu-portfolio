@@ -32,9 +32,14 @@ export const HOME_SECTIONS = [
   { id: "contact", label: "Contact" },
 ] as const;
 
-/** Routes surfaced in the home-page nav alongside the scroll-spy sections. */
+/**
+  * Routes surfaced in the home-page nav alongside the scroll-spy sections.
+  * Without these, /security and /resume are unreachable from the nav while a
+  * visitor is on the home page — the home nav renders sections, not routes.
+  */
 export const HOME_NAV_ROUTES = [
   { href: "/security", label: "Security" },
+  { href: "/resume", label: "Resume" },
 ] as const;
 
 export const SOFTWARE_SKILLS = [

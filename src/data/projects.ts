@@ -28,11 +28,6 @@ export const CONTENT_TYPE_LABEL: Record<ContentType, string> = {
   assessment: "Security Assessment",
 };
 
-export interface ProjectArtifact {
-  label: string;
-  type: "diagram" | "screenshot" | "video" | "threat-model";
-}
-
 export interface ProjectScreenshot {
   src: string;
   alt: string;
@@ -115,7 +110,6 @@ export interface Project {
   securityReliability?: string[];
   designTradeoffs?: string[];
   results?: string[];
-  artifacts?: ProjectArtifact[];
 
   // --- Security case-study sections -----------------------------------
   // Rendered in this exact order. `limits` is not optional in practice: a
@@ -251,7 +245,6 @@ export const PROJECTS: Project[] = [
       "Foundation is built to add every other major stroke without re-doing the work",
     ],
     links: [{ label: "strokevision.app", href: "https://strokevision.app" }],
-    artifacts: [],
   },
   {
     slug: "sponsorhub",
@@ -311,10 +304,6 @@ export const PROJECTS: Project[] = [
       "Fraud and risk scoring pipeline architected for conversion validation",
       "Frontend dashboards and integration testing in progress",
     ],
-    artifacts: [
-      { label: "Architecture Diagram", type: "diagram" },
-      { label: "Threat Model", type: "threat-model" },
-    ],
   },
   {
     slug: "home-assistant-ai",
@@ -365,11 +354,6 @@ export const PROJECTS: Project[] = [
       "Modular architecture enables easy addition of new services and entities",
       "Security-first design prevents unauthorized device control",
     ],
-    artifacts: [
-      { label: "Architecture Diagram", type: "diagram" },
-      { label: "Threat Model", type: "threat-model" },
-      { label: "Demo Video", type: "video" },
-    ],
   },
   {
     slug: "wpi-website",
@@ -415,7 +399,6 @@ export const PROJECTS: Project[] = [
       "Enabled nonprofit to manage content independently via CMS",
       "Optimized for mobile performance and accessibility",
     ],
-    artifacts: [{ label: "Screenshots", type: "screenshot" }],
   },
   {
     slug: "gumc-migration",
@@ -460,7 +443,6 @@ export const PROJECTS: Project[] = [
       "Improved mobile responsiveness and page load performance",
       "Enabled secure online giving via PayPal",
     ],
-    artifacts: [{ label: "Screenshots", type: "screenshot" }],
   },
 
   // ---------------------------------------------------------------------
@@ -791,10 +773,6 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return PROJECTS.find((p) => p.slug === slug);
 }
 
-export function getProjectsByTag(tag: ProjectTag): Project[] {
-  return PROJECTS.filter((p) => p.tags.includes(tag));
-}
-
 /**
  * Security casework is rendered by a different template than software work,
  * and this is the single place that decision is made. Entries without an
@@ -803,11 +781,6 @@ export function getProjectsByTag(tag: ProjectTag): Project[] {
  */
 export function isSecurityCaseStudy(project: Project): boolean {
   return project.category === "security";
-}
-
-/** Academic work must always be labelled as such — see the Academic tag. */
-export function isAcademic(project: Project): boolean {
-  return project.tags.includes("Academic");
 }
 
 /**
