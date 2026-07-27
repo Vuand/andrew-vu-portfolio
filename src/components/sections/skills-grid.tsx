@@ -34,7 +34,7 @@ export function SkillsGrid() {
               className={cn(
                 "rounded-md px-6 py-2.5 text-base font-medium transition-colors cursor-pointer",
                 activeTab === "software"
-                  ? "bg-accent text-accent-foreground"
+                  ? "bg-accent-solid text-accent-foreground"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
@@ -45,7 +45,7 @@ export function SkillsGrid() {
               className={cn(
                 "rounded-md px-6 py-2.5 text-base font-medium transition-colors cursor-pointer",
                 activeTab === "security"
-                  ? "bg-accent text-accent-foreground"
+                  ? "bg-accent-solid text-accent-foreground"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >

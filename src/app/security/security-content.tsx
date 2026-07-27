@@ -116,7 +116,9 @@ export function SecurityContent() {
           </p>
         </FadeIn>
 
-        <Stagger className="mb-20 grid gap-6 md:grid-cols-3">
+        {/* Two-up at tablet width; three-up only once there is room for the
+            content-type badge to sit on one line. */}
+        <Stagger className="mb-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {caseStudies.map((project) => (
             <StaggerItem key={project.slug}>
               <Link href={`/projects/${project.slug}`} className="block h-full">
@@ -300,7 +302,7 @@ export function SecurityContent() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                  <h4 className="mb-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
                     Mitigations
                   </h4>
                   <ul className="space-y-1.5">
@@ -340,6 +342,13 @@ export function SecurityContent() {
               page.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
+              {/* TODO(andrew): replace public/documents/AndrewVu_Resume_Cybersecurity.pdf
+                  with the updated cybersecurity resume. The file currently at
+                  that path is the one committed in 6e239d4 and predates the
+                  three case studies on this page — a recruiter cross-checking
+                  the PDF against this page will not find them. No placeholder
+                  has been generated; drop the real file in at the same path
+                  and nothing here needs to change. */}
               <a href="/documents/AndrewVu_Resume_Cybersecurity.pdf" download>
                 <Button variant="accent" size="md">
                   <Download className="h-4 w-4" />

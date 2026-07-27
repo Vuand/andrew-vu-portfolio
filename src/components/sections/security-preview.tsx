@@ -145,7 +145,7 @@ export function SecurityPreview() {
                     </ul>
                   </div>
                   <div>
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
                       Mitigations
                     </p>
                     <ul className="space-y-1">

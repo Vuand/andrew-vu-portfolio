@@ -37,7 +37,7 @@ export default function ProjectsPage() {
             className={cn(
               "rounded-full px-4 py-1.5 text-sm font-medium transition-colors cursor-pointer",
               activeTag === "All"
-                ? "bg-accent text-accent-foreground"
+                ? "bg-accent-solid text-accent-foreground"
                 : "bg-muted text-muted-foreground hover:text-foreground"
             )}
           >
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
               className={cn(
                 "rounded-full px-4 py-1.5 text-sm font-medium transition-colors cursor-pointer",
                 activeTag === tag
-                  ? "bg-accent text-accent-foreground"
+                  ? "bg-accent-solid text-accent-foreground"
                   : "bg-muted text-muted-foreground hover:text-foreground"
               )}
             >

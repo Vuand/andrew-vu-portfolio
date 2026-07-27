@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PROJECTS, getProjectBySlug, isSecurityCaseStudy } from "@/data/projects";
+import {
+  PROJECTS,
+  getProjectBySlug,
+  getContentTypeLabel,
+  isSecurityCaseStudy,
+} from "@/data/projects";
 import { ProjectCaseStudy } from "./project-case-study";
 import { SecurityCaseStudy } from "./security-case-study";
 
@@ -19,8 +24,18 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug);
   if (!project) return {};
 
+  // "Case Study" for software work, "Forensic Examination" / "Security
+  // Assessment" for casework — the tab title should not misdescribe the page.
+  // Suppressed where the title already carries the noun, so titles do not
+  // read "Forensic Examination — Forensic Examination".
+  const label = getContentTypeLabel(project);
+  const labelNoun = label.split(" ").pop()!.toLowerCase();
+  const title = project.title.toLowerCase().includes(labelNoun)
+    ? project.title
+    : `${project.title} — ${label}`;
+
   return {
-    title: `${project.title} — Case Study`,
+    title,
     description: project.tagline,
     openGraph: {
       title: `${project.title} — Andrew Vu`,

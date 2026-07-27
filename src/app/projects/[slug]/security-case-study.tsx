@@ -186,7 +186,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
                       <li key={step.title} className="flex gap-4">
                         <span
                           aria-hidden="true"
-                          className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/10 font-mono text-xs font-semibold text-accent"
+                          className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/10 font-mono text-xs font-semibold text-accent-tinted"
                         >
                           {String(i + 1).padStart(2, "0")}
                         </span>
@@ -262,7 +262,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
               <section className="mb-12">
                 <div className="rounded-xl border-2 border-amber-500/40 bg-amber-500/5 p-6 md:p-8">
                   <h2 className="flex items-center gap-2.5 text-2xl font-bold text-foreground">
-                    <Scale className="h-6 w-6 shrink-0 text-amber-600 dark:text-amber-400" />
+                    <Scale className="h-6 w-6 shrink-0 text-amber-700 dark:text-amber-400" />
                     Limits &amp; what would confirm
                   </h2>
                   <p className="mt-2 text-sm text-muted-foreground">
@@ -341,7 +341,7 @@ export function SecurityCaseStudy({ project }: { project: Project }) {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-md shadow-accent/30 transition-all duration-200 hover:shadow-lg hover:shadow-accent/40 hover:brightness-110 active:scale-[0.98]"
+                    className="group inline-flex items-center gap-2 rounded-full bg-accent-solid px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-md shadow-accent/30 transition-all duration-200 hover:shadow-lg hover:shadow-accent/40 hover:brightness-110 active:scale-[0.98]"
                   >
                     {link.label}
                     <ExternalLink className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

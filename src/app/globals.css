@@ -14,6 +14,8 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-tinted: var(--accent-tinted);
+  --color-accent-solid: var(--accent-solid);
   --color-ring: var(--ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -31,6 +33,13 @@
   --primary-foreground: #fafafa;
   --accent: #2563eb;
   --accent-foreground: #ffffff;
+  /* For text sitting on an accent/10 tint. The plain accent measures 4.32:1
+     against that tint in light mode, just under WCAG AA's 4.5 for normal
+     text; this darker blue measures 5.55:1. */
+  --accent-tinted: #1d4ed8;
+  /* Background for filled accent surfaces carrying white text. Identical to
+     --accent here, so light mode is unchanged. */
+  --accent-solid: #2563eb;
   --ring: #2563eb;
 }
 
@@ -46,6 +55,12 @@
   --primary-foreground: #0a0a0a;
   --accent: #3b82f6;
   --accent-foreground: #ffffff;
+  /* Dark mode already clears AA on the tint, so no separate value is needed. */
+  --accent-tinted: #3b82f6;
+  /* --accent is tuned for accent-coloured TEXT on the dark background (5.4:1)
+     and is too light to carry white text: white on #3b82f6 is only 3.68:1,
+     under WCAG AA. Filled CTAs use this deeper blue instead, at 5.2:1. */
+  --accent-solid: #2563eb;
   --ring: #3b82f6;
 }
 

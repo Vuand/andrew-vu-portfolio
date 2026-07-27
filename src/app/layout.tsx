@@ -35,20 +35,11 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: SITE_CONFIG.title,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
-    images: ["/images/og-image.png"],
   },
   robots: {
     index: true,
@@ -70,18 +61,24 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
+              // Stable @id so the specialised Person node on /security is
+              // merged into this one rather than read as a second individual.
+              "@id": `${SITE_CONFIG.url}#person`,
               name: "Andrew Vu",
               url: SITE_CONFIG.url,
-              jobTitle: "Full-Stack Software Engineer",
+              jobTitle: "Software and Security Engineer",
               alumniOf: {
                 "@type": "CollegeOrUniversity",
                 name: "Oregon State University",
               },
-              sameAs: [SITE_CONFIG.github, SITE_CONFIG.linkedin],
+              sameAs: [SITE_CONFIG.linkedin, SITE_CONFIG.github],
               knowsAbout: [
-                "Full-Stack Development",
-                "Cybersecurity",
+                "Digital Forensics",
+                "Incident Response",
+                "Security Analysis",
+                "Vulnerability Assessment",
                 "Application Security",
+                "Full-Stack Development",
                 "TypeScript",
                 "Python",
                 "Next.js",
@@ -97,7 +94,7 @@ export default function RootLayout({
         <ThemeProvider>
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-foreground"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-accent-solid focus:px-4 focus:py-2 focus:text-accent-foreground"
           >
             Skip to main content
           </a>
