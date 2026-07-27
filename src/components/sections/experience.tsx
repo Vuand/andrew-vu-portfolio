@@ -43,7 +43,7 @@ const roles: Role[] = [
     tech: ["Framer", "HTML/CSS/JS", "PayPal API", "DNS"],
     bullets: [
       "Architected component-based web system in Framer with custom HTML/CSS/JS reusable components, reducing content update time for non-technical staff",
-      "Led zero-downtime Wix → Framer migration — planned DNS transfer, domain config, and email continuity with no service interruption",
+      "Led Wix → Framer migration — planned the domain transfer, DNS configuration, and email continuity to minimize downtime and avoid data loss during cutover",
       "Built structured content models (events, leadership, programs) as data-driven templates for scalable CMS management",
       "Integrated secure PayPal payment processing; enforced mobile responsiveness and ADA accessibility across all pages",
     ],

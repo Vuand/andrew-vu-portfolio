@@ -149,8 +149,8 @@ export function ResumeContent() {
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  Led Wix → Framer migration with zero downtime — DNS config,
-                  domain transfer, email continuity
+                  Led Wix → Framer migration — domain transfer, DNS config,
+                  and email continuity to minimize downtime
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />

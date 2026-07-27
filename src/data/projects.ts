@@ -405,9 +405,9 @@ export const PROJECTS: Project[] = [
     category: "software",
     contentType: "project",
     title: "GUMC Platform Migration",
-    tagline: "Zero-downtime Wix-to-Framer migration",
+    tagline: "Wix-to-Framer migration planned to minimize downtime",
     description:
-      "Led a full platform migration from Wix to Framer. Built a component-based web architecture with reusable UI components, structured content models, and secure payment integration — with zero downtime.",
+      "Led a full platform migration from Wix to Framer. Built a component-based web architecture with reusable UI components, structured content models, and secure payment integration, with the domain transfer, DNS configuration, and email continuity planned ahead of cutover to minimize downtime.",
     image: "/GreshamUMC.png",
     tags: ["Web", "Full-Stack"],
     tech: [
@@ -424,21 +424,21 @@ export const PROJECTS: Project[] = [
     problem:
       "The church's Wix site was inflexible, slow, and difficult for non-technical staff to update. Content was scattered with no consistent structure, and the site lacked mobile responsiveness.",
     solution:
-      "Migrated to Framer with component-based architecture using custom HTML/CSS/JS reusable components. Built structured content models for events, leadership, and programs. Handled domain transfer, DNS config, and email continuity for zero-downtime migration.",
+      "Migrated to Framer with component-based architecture using custom HTML/CSS/JS reusable components. Built structured content models for events, leadership, and programs. Handled domain transfer, DNS config, and email continuity to minimize downtime and avoid data loss during cutover.",
     architecture: [
       "Framer → Custom reusable components (HTML/CSS/JS) → Structured CMS collections",
       "Content models: events, leadership bios, program pages — all data-driven templates",
       "Migration path: Wix export → Content restructuring → Framer build → DNS transfer → Email continuity → Go-live",
     ],
     securityReliability: [
-      "Zero-downtime migration with DNS pre-planning and email continuity verification",
+      "DNS pre-planning and email continuity verification to minimize downtime at cutover",
       "Secure payment integration via PayPal",
       "ADA-aware accessibility practices",
       "Separation of concerns — content models decoupled from presentation components",
       "Mobile-first responsive design tested across devices",
     ],
     results: [
-      "Zero-downtime migration completed successfully",
+      "Migration completed with downtime minimized through DNS and email-continuity pre-planning",
       "Component architecture reduced content update time for staff",
       "Improved mobile responsiveness and page load performance",
       "Enabled secure online giving via PayPal",

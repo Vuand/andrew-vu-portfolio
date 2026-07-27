@@ -50,8 +50,8 @@ const proofTiles = [
   },
   {
     icon: Globe,
-    title: "Zero-Downtime Migration",
-    detail: "DNS/domain/email continuity planned and executed with no service interruption",
+    title: "Planned DNS Cutover",
+    detail: "Domain transfer, DNS, and email continuity planned ahead of cutover to minimize downtime",
     project: "GUMC",
   },
 ];
