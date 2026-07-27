@@ -55,12 +55,10 @@ export function RecruiterTLDR() {
             data structures, cloud technologies, AI/ML, and cybersecurity,
             supported by hands-on academic and personal projects. I enjoy
             building full-stack applications with a security-first mindset
-            across systems, web, and cloud environments. I&rsquo;m motivated, curious,
-            and passionate about continuous learning, problem-solving, and
-            working in collaborative environments. Outside of tech, I enjoy
-            playing tennis, working out at the gym, and exploring new
+            across systems, web, and cloud environments. Outside of tech, I
+            enjoy playing tennis, working out at the gym, and exploring new
             experiences. I&rsquo;m currently seeking software or cybersecurity
-            engineering roles where I can apply my skills and grow in industry.
+            engineering roles where I can grow.
           </p>
         </motion.div>
 
